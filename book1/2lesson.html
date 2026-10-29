@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 2 · 玛丽哭了</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #FBF7EF; color: #2D2A26;
+    max-width: 960px; margin: 0 auto; padding: 20px 15px;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .header {
+    text-align: center; margin-bottom: 30px; padding: 30px 15px;
+    background: linear-gradient(135deg,#FFF9F0,#F5EDE3);
+    border-radius: 16px; border: 1px solid #E8E0D0;
+  }
+  .header h1 { font-size: 28px; font-weight: 700; color: #C0392B; font-family: 'Georgia',serif; }
+  .header p { margin-top: 8px; color: #6B6B6B; font-size: 15px; }
+  .nav {
+    display:flex; justify-content:center; gap:8px; flex-wrap:wrap;
+    margin-bottom:25px; padding:12px; background:#FFF;
+    border-radius:12px; border:1px solid #E8E0D0; position:sticky; top:0; z-index:100;
+  }
+  .nav a {
+    padding:8px 14px; background:#F5F0E8; border-radius:20px;
+    text-decoration:none; color:#2D2A26; font-size:14px; font-weight:600;
+  }
+  .nav a:hover { background:#C0392B; color:#fff; }
+  .section {
+    margin-bottom:40px; background:#FFF; border-radius:16px;
+    border:1px solid #E8E0D0; padding:25px;
+  }
+  .section-title {
+    font-size:22px; font-weight:700; margin-bottom:20px; padding-bottom:8px;
+    border-bottom:3px solid #C0392B; display:inline-block;
+  }
+
+  /* СЛОВАРЬ — КАРТОЧКИ */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+  }
+  .vocab-card {
+    background: #FBF7EF;
+    border: 1px solid #E8E0D0;
+    border-radius: 12px;
+    padding: 18px;
+    transition: 0.2s;
+  }
+  .vocab-card:hover { border-color: #C0392B; }
+  .vocab-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .vocab-cn { font-size: 28px; font-weight: 700; color: #C0392B; font-family: 'Georgia',serif; }
+  .vocab-pinyin { color: #6B6B6B; font-size: 16px; }
+  .vocab-ru { font-size: 16px; color: #2D2A26; margin-bottom: 10px; }
+  .vocab-keys {
+    font-size: 14px;
+    color: #8B7355;
+    line-height: 1.8;
+    background: #FFF;
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1px solid #F0E8D8;
+  }
+  .vocab-keys b { color: #C0392B; }
+  .vocab-mnemonic {
+    font-size: 14px;
+    color: #6B6B6B;
+    margin-top: 8px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .example-box { background:#F5F0E8; padding:14px; border-radius:8px; margin-bottom:15px; }
+  .example-cn { font-size:20px; font-weight:700; color:#C0392B; font-family:'Georgia',serif; }
+  .example-pinyin { color:#6B6B6B; font-size:15px; margin-top:4px; }
+  .example-ru { font-size:15px; margin-top:4px; }
+
+  .hanzi-grid,.pinyin-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+  .hanzi-card,.pinyin-card {
+    background:#FFF; border:1px solid #E8E0D0; border-radius:12px; padding:20px;
+    text-align:center; cursor:pointer; transition:.2s; min-height:90px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hanzi-card:hover,.pinyin-card:hover { border-color:#C0392B; transform:translateY(-2px); }
+  .hanzi-front,.hanzi-back,.pinyin-front,.pinyin-back {
+    font-size:22px; font-weight:700; color:#C0392B; font-family:'Georgia',serif;
+  }
+  .hanzi-back,.pinyin-back { display:none; color:#2D2A26; font-size:17px; }
+  .hanzi-card.flipped .hanzi-front,.pinyin-card.flipped .pinyin-front { display:none; }
+  .hanzi-card.flipped .hanzi-back,.pinyin-card.flipped .pinyin-back { display:block; }
+
+  .test-block { margin-bottom:20px; padding:15px; background:#F5F0E8; border-radius:12px; font-size:16px; }
+  .test-block button {
+    display:inline-block; margin:5px 5px 0 0; padding:8px 14px; background:#FFF;
+    border:1px solid #E8E0D0; border-radius:20px; cursor:pointer; font-size:15px;
+  }
+  .test-block button:hover { background:#C0392B; color:#fff; border-color:#C0392B; }
+  .test-block p:last-child { margin-top:10px; font-weight:600; font-size:16px; }
+
+  @media (max-width:600px){
+    .header h1{font-size:24px;} .nav a{font-size:13px;padding:6px 10px;}
+    .vocab-grid{grid-template-columns:1fr;}
+    .hanzi-grid,.pinyin-grid{grid-template-columns:repeat(2,1fr);}
+    body{font-size:16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>第二课 · 玛丽哭了</h1>
+  <p>Урок 2 · Мари заплакала</p>
+</div>
+
+<nav class="nav">
+  <a href="#vocab">Слова</a>
+  <a href="#grammar">Грамматика</a>
+  <a href="#tests">Тесты</a>
+  <a href="#repeat-hanzi">Иероглифы</a>
+  <a href="#repeat-pinyin">Пиньинь</a>
+</nav>
+
+<!-- ===== СЛОВА ===== -->
+<div class="section" id="vocab">
+  <div class="section-title">📖 Слова</div>
+  <div class="vocab-grid">
+
+    <!-- Текст 1: Здоровье -->
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">病人</span>
+        <span class="vocab-pinyin">bìngrén</span>
+        <span class="vocab-ru">пациент, больной</span>
+      </div>
+      <div class="vocab-keys">
+        病 (болезнь, bìng) — <b>смысловой</b> · 人 (человек, rén) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Человек с болезнью — пациент</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">肚子</span>
+        <span class="vocab-pinyin">dùzi</span>
+        <span class="vocab-ru">живот</span>
+      </div>
+      <div class="vocab-keys">
+        月 (мясо/тело, yuè) — <b>смысловой</b> · 土 (земля, tǔ) — <b>фонетик</b> · 子 (суффикс, zǐ) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Тело с землёй внутри — живот</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">疼</span>
+        <span class="vocab-pinyin">téng</span>
+        <span class="vocab-ru">болеть</span>
+      </div>
+      <div class="vocab-keys">
+        疒 (болезнь, chuáng) — <b>смысловой</b> · 冬 (зима, dōng) — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Зимой болеть — больно</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">厉害</span>
+        <span class="vocab-pinyin">lìhai</span>
+        <span class="vocab-ru">сильно, серьёзно</span>
+      </div>
+      <div class="vocab-keys">
+        厉 (острый, lì) — <b>смысловой</b> · 害 (вред, hài) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Острый вред — сильно, серьёзно</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">片</span>
+        <span class="vocab-pinyin">piàn</span>
+        <span class="vocab-ru">таблетка (сч. слово)</span>
+      </div>
+      <div class="vocab-keys">
+        片 (дощечка, piàn) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Плоский кусочек — таблетка</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">拉肚子</span>
+        <span class="vocab-pinyin">lādùzi</span>
+        <span class="vocab-ru">понос, расстройство</span>
+      </div>
+      <div class="vocab-keys">
+        拉 (тянуть, lā) — <b>смысловой</b> · 肚 (живот, dù) — <b>смысловой</b> · 子 (суффикс, zǐ) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Тянуть живот — понос</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">鱼</span>
+        <span class="vocab-pinyin">yú</span>
+        <span class="vocab-ru">рыба</span>
+      </div>
+      <div class="vocab-keys">
+        鱼 (рыба, yú) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Рыба как есть</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">牛肉</span>
+        <span class="vocab-pinyin">niúròu</span>
+        <span class="vocab-ru">говядина</span>
+      </div>
+      <div class="vocab-keys">
+        牛 (корова, niú) — <b>смысловой</b> · 肉 (мясо, ròu) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Мясо коровы — говядина</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">化验</span>
+        <span class="vocab-pinyin">huàyàn</span>
+        <span class="vocab-ru">анализ, проверять</span>
+      </div>
+      <div class="vocab-keys">
+        化 (менять, huà) — <b>смысловой</b> · 验 (проверять, yàn) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Менять и проверять — анализ</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">大便</span>
+        <span class="vocab-pinyin">dàbiàn</span>
+        <span class="vocab-ru">кал / опорожняться</span>
+      </div>
+      <div class="vocab-keys">
+        大 (большой, dà) — <b>смысловой</b> · 便 (удобный, biàn) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Большое удобство — туалет</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">检查</span>
+        <span class="vocab-pinyin">jiǎnchá</span>
+        <span class="vocab-ru">осматривать, проверять</span>
+      </div>
+      <div class="vocab-keys">
+        检 (проверять, jiǎn) — <b>смысловой</b> · 查 (инспектировать, chá) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Проверять и инспектировать</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">结果</span>
+        <span class="vocab-pinyin">jiéguǒ</span>
+        <span class="vocab-ru">результат</span>
+      </div>
+      <div class="vocab-keys">
+        结 (связывать, jié) — <b>смысловой</b> · 果 (плод, guǒ) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Связанный плод — результат</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">出来</span>
+        <span class="vocab-pinyin">chūlai</span>
+        <span class="vocab-ru">выйти, появиться</span>
+      </div>
+      <div class="vocab-keys">
+        出 (выходить, chū) — <b>смысловой</b> · 来 (приходить, lái) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Выйти и прийти — появиться</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">得</span>
+        <span class="vocab-pinyin">dé</span>
+        <span class="vocab-ru">получить (болезнь)</span>
+      </div>
+      <div class="vocab-keys">
+        彳 (шаг, chì) — <b>смысловой</b> · 日 (день, rì) — <b>фонетик</b> · 一寸 (один цунь) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Шаг за днём — получить</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">肠炎</span>
+        <span class="vocab-pinyin">chángyán</span>
+        <span class="vocab-ru">энтерит</span>
+      </div>
+      <div class="vocab-keys">
+        肠 (кишки, cháng) — <b>смысловой</b> · 炎 (воспаление, yán) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Воспаление кишок — энтерит</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">消化</span>
+        <span class="vocab-pinyin">xiāohuà</span>
+        <span class="vocab-ru">пищеварение</span>
+      </div>
+      <div class="vocab-keys">
+        消 (исчезать, xiāo) — <b>смысловой</b> · 化 (менять, huà) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Исчезает и меняется — переваривается</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">开药</span>
+        <span class="vocab-pinyin">kāi yào</span>
+        <span class="vocab-ru">выписать лекарство</span>
+      </div>
+      <div class="vocab-keys">
+        开 (открывать, kāi) — <b>смысловой</b> · 药 (лекарство, yào) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Открыть лекарство — выписать рецепт</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">打针</span>
+        <span class="vocab-pinyin">dǎzhēn</span>
+        <span class="vocab-ru">делать укол</span>
+      </div>
+      <div class="vocab-keys">
+        打 (бить, dǎ) — <b>смысловой</b> · 针 (игла, zhēn) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Бить иглой — делать укол</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">后</span>
+        <span class="vocab-pinyin">hòu</span>
+        <span class="vocab-ru">после</span>
+      </div>
+      <div class="vocab-keys">
+        后 (после, hòu) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">После как есть</div>
+    </div>
+
+    <!-- Текст 2: Мари плачет -->
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">哭</span>
+        <span class="vocab-pinyin">kū</span>
+        <span class="vocab-ru">плакать</span>
+      </div>
+      <div class="vocab-keys">
+        吅 (два рта, xuān) — <b>смысловой</b> · 犬 (собака, quǎn) — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Собака воет — как будто плачет</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">寂寞</span>
+        <span class="vocab-pinyin">jìmò</span>
+        <span class="vocab-ru">одиноко</span>
+      </div>
+      <div class="vocab-keys">
+        寂 (тихий, jì) — <b>смысловой</b> · 寞 (пустой, mò) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Тихо и пусто — одиноко</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">因为</span>
+        <span class="vocab-pinyin">yīnwèi</span>
+        <span class="vocab-ru">потому что</span>
+      </div>
+      <div class="vocab-keys">
+        因 (причина, yīn) — <b>смысловой</b> · 为 (делать, wèi) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Причина действия — потому что</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">所以</span>
+        <span class="vocab-pinyin">suǒyǐ</span>
+        <span class="vocab-ru">поэтому</span>
+      </div>
+      <div class="vocab-keys">
+        所 (место, suǒ) — <b>смысловой</b> · 以 (использовать, yǐ) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Место использования — поэтому</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">难过</span>
+        <span class="vocab-pinyin">nánguò</span>
+        <span class="vocab-ru">грустно, плохо</span>
+      </div>
+      <div class="vocab-keys">
+        难 (трудно, nán) — <b>смысловой</b> · 过 (проходить, guò) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Трудно пройти — грустно</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">别</span>
+        <span class="vocab-pinyin">bié</span>
+        <span class="vocab-ru">не (запрет)</span>
+      </div>
+      <div class="vocab-keys">
+        另 (другой, lìng) — <b>фонетик</b> · 刂 (нож, dāo) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Отрезать ножом — «не делай»</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">礼堂</span>
+        <span class="vocab-pinyin">lǐtáng</span>
+        <span class="vocab-ru">зал, аудитория</span>
+      </div>
+      <div class="vocab-keys">
+        礼 (ритуал, lǐ) — <b>смысловой</b> · 堂 (зал, táng) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Зал для ритуалов — аудитория</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">舞会</span>
+        <span class="vocab-pinyin">wǔhuì</span>
+        <span class="vocab-ru">танцы, бал</span>
+      </div>
+      <div class="vocab-keys">
+        舞 (танцевать, wǔ) — <b>смысловой</b> · 会 (собрание, huì) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Собрание танцев — бал</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">跳舞</span>
+        <span class="vocab-pinyin">tiàowǔ</span>
+        <span class="vocab-ru">танцевать</span>
+      </div>
+      <div class="vocab-keys">
+        跳 (прыгать, tiào) — <b>смысловой</b> · 舞 (танцевать, wǔ) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Прыгать в танце</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">想家</span>
+        <span class="vocab-pinyin">xiǎng jiā</span>
+        <span class="vocab-ru">скучать по дому</span>
+      </div>
+      <div class="vocab-keys">
+        想 (думать, xiǎng) — <b>смысловой</b> · 家 (дом, jiā) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Думать о доме — скучать</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">心情</span>
+        <span class="vocab-pinyin">xīnqíng</span>
+        <span class="vocab-ru">настроение</span>
+      </div>
+      <div class="vocab-keys">
+        心 (сердце, xīn) — <b>смысловой</b> · 情 (чувство, qíng) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Чувство сердца — настроение</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">安慰</span>
+        <span class="vocab-pinyin">ānwèi</span>
+        <span class="vocab-ru">утешать</span>
+      </div>
+      <div class="vocab-keys">
+        安 (спокойный, ān) — <b>смысловой</b> · 慰 (утешать, wèi) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Успокоить — утешить</div>
+    </div>
+
+  </div>
+</div>
+<!-- ===== ГРАММАТИКА ===== -->
+<div class="section" id="grammar">
+  <div class="section-title">📚 Грамматика</div>
+
+  <div class="example-box">
+    <div class="example-cn">1. 动词 + 了 (завершённое действие)</div>
+    <div class="example-pinyin">dòngcí + le</div>
+    <div class="example-ru">
+      了 показывает, что действие <b>завершено</b>.<br>
+      Отрицание: <b>没(有) + 动词</b> (без 了!).<br>
+      Вопрос: <b>动词 + 了 + 吗？</b>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">✅ 肯定</div>
+    <div class="example-cn" style="font-size:18px;">我吃了晚饭。 Wǒ chī le wǎnfàn.</div>
+    <div class="example-ru">Я поужинал.</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">❌ 否定 (без 了!)</div>
+    <div class="example-cn" style="font-size:18px;">我没吃晚饭。 Wǒ méi chī wǎnfàn.</div>
+    <div class="example-ru">Я не ужинал.</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">❓ 疑问</div>
+    <div class="example-cn" style="font-size:18px;">你吃饭了没有？ Nǐ chī fàn le méiyǒu?</div>
+    <div class="example-ru">Ты поел?</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">2. 因为……所以…… (потому что... поэтому...)</div>
+    <div class="example-pinyin">yīnwèi... suǒyǐ...</div>
+    <div class="example-ru">
+      Связка «причина → следствие».<br>
+      因为 (причина)，所以 (следствие).
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">因为玛丽想家，所以她哭了。</div>
+    <div class="example-pinyin">Yīnwèi Mǎlì xiǎng jiā, suǒyǐ tā kū le.</div>
+    <div class="example-ru">Потому что Мари скучала по дому, она заплакала.</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">3. 别 + 动词 (запрет)</div>
+    <div class="example-pinyin">bié + dòngcí</div>
+    <div class="example-ru">
+      «Не делай...» — вежливый запрет.
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">别哭了！ Bié kū le!</div>
+    <div class="example-ru">Не плачь!</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">别着急！ Bié zháojí!</div>
+    <div class="example-ru">Не волнуйся!</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">4. 是不是 + 动词？ (неужели...?)</div>
+    <div class="example-pinyin">shì bu shì + dòngcí?</div>
+    <div class="example-ru">
+      Вопрос-предположение: «Неужели...?», «Верно ли, что...?»
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">我是不是得了肠炎？</div>
+    <div class="example-pinyin">Wǒ shì bu shì dé le chángyán?</div>
+    <div class="example-ru">Неужели я заболел энтеритом?</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">5. 就 (сразу, затем)</div>
+    <div class="example-pinyin">jiù</div>
+    <div class="example-ru">
+      Показывает, что действие происходит <b>сразу после</b> другого.
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">吃了晚饭就去。 Chī le wǎnfàn jiù qù.</div>
+    <div class="example-ru">Поужинаю и сразу пойду.</div>
+  </div>
+
+</div>
+
+<!-- ===== ТЕСТЫ ===== -->
+<div class="section" id="tests">
+  <div class="section-title">✏️ Тесты</div>
+
+  <div class="test-block">
+    <p><b>1. Выбери правильный вариант (了 или 没):</b></p>
+    <p>我 ___ 吃早饭。 (Я не завтракал)</p>
+    <button onclick="checkTest(this, '没')">没</button>
+    <button onclick="checkTest(this, '了')">了</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>2. Выбери правильный вариант (了 или 没):</b></p>
+    <p>我吃 ___ 晚饭。 (Я поужинал)</p>
+    <button onclick="checkTest(this, '了')">了</button>
+    <button onclick="checkTest(this, '没')">没</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>3. Вставь 因为 или 所以:</b></p>
+    <p>___ 玛丽想家，___ 她哭了。</p>
+    <button onclick="checkTest(this, '因为...所以...')">因为...所以...</button>
+    <button onclick="checkTest(this, '所以...因为...')">所以...因为...</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>4. Выбери правильный запрет:</b></p>
+    <p>___ 哭了！ (Не плачь!)</p>
+    <button onclick="checkTest(this, '别')">别</button>
+    <button onclick="checkTest(this, '不')">不</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>5. Переведи: 我是不是得了肠炎？</b></p>
+    <button onclick="checkTest(this, 'Неужели я заболел энтеритом?')">Неужели я заболел энтеритом?</button>
+    <button onclick="checkTest(this, 'Я точно не болею энтеритом')">Я точно не болею энтеритом</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>6. Выбери правильный порядок:</b></p>
+    <p>___ 吃了晚饭 ___ 去。 (Поужинаю и сразу пойду)</p>
+    <button onclick="checkTest(this, '就...就...')">就...就...</button>
+    <button onclick="checkTest(this, '...就...')">...就...</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>7. Выбери правильный перевод: 别难过了</b></p>
+    <button onclick="checkTest(this, 'Не грусти больше')">Не грусти больше</button>
+    <button onclick="checkTest(this, 'Будь грустным')">Будь грустным</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>8. Выбери правильный вариант: 化验结果出来了 ___ ？</b></p>
+    <button onclick="checkTest(this, '吗')">吗</button>
+    <button onclick="checkTest(this, '呢')">呢</button>
+    <p class="result"></p>
+  </div>
+
+</div>
+
+<script>
+function checkTest(btn, correct) {
+  const block = btn.parentElement;
+  const result = block.querySelector('.result');
+  if (btn.textContent.trim() === correct) {
+    result.textContent = '✅ Правильно!';
+    result.style.color = '#27AE60';
+  } else {
+    result.textContent = '❌ Неправильно. Правильный ответ: ' + correct;
+    result.style.color = '#C0392B';
+  }
+}
+</script>
+<!-- ===== ГРАММАТИКА ===== -->
+<div class="section" id="grammar">
+  <div class="section-title">📚 Грамматика</div>
+
+  <div class="example-box">
+    <div class="example-cn">1. 动词 + 了 (завершённое действие)</div>
+    <div class="example-pinyin">dòngcí + le</div>
+    <div class="example-ru">
+      了 показывает, что действие <b>завершено</b>.<br>
+      Отрицание: <b>没(有) + 动词</b> (без 了!).<br>
+      Вопрос: <b>动词 + 了 + 吗？</b>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">✅ 肯定</div>
+    <div class="example-cn" style="font-size:18px;">我吃了晚饭。 Wǒ chī le wǎnfàn.</div>
+    <div class="example-ru">Я поужинал.</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">❌ 否定 (без 了!)</div>
+    <div class="example-cn" style="font-size:18px;">我没吃晚饭。 Wǒ méi chī wǎnfàn.</div>
+    <div class="example-ru">Я не ужинал.</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">❓ 疑问</div>
+    <div class="example-cn" style="font-size:18px;">你吃饭了没有？ Nǐ chī fàn le méiyǒu?</div>
+    <div class="example-ru">Ты поел?</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">2. 因为……所以…… (потому что... поэтому...)</div>
+    <div class="example-pinyin">yīnwèi... suǒyǐ...</div>
+    <div class="example-ru">
+      Связка «причина → следствие».<br>
+      因为 (причина)，所以 (следствие).
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">因为玛丽想家，所以她哭了。</div>
+    <div class="example-pinyin">Yīnwèi Mǎlì xiǎng jiā, suǒyǐ tā kū le.</div>
+    <div class="example-ru">Потому что Мари скучала по дому, она заплакала.</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">3. 别 + 动词 (запрет)</div>
+    <div class="example-pinyin">bié + dòngcí</div>
+    <div class="example-ru">
+      «Не делай...» — вежливый запрет.
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">别哭了！ Bié kū le!</div>
+    <div class="example-ru">Не плачь!</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">别着急！ Bié zháojí!</div>
+    <div class="example-ru">Не волнуйся!</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">4. 是不是 + 动词？ (неужели...?)</div>
+    <div class="example-pinyin">shì bu shì + dòngcí?</div>
+    <div class="example-ru">
+      Вопрос-предположение: «Неужели...?», «Верно ли, что...?»
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">我是不是得了肠炎？</div>
+    <div class="example-pinyin">Wǒ shì bu shì dé le chángyán?</div>
+    <div class="example-ru">Неужели я заболел энтеритом?</div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn">5. 就 (сразу, затем)</div>
+    <div class="example-pinyin">jiù</div>
+    <div class="example-ru">
+      Показывает, что действие происходит <b>сразу после</b> другого.
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="example-cn" style="font-size:18px;">吃了晚饭就去。 Chī le wǎnfàn jiù qù.</div>
+    <div class="example-ru">Поужинаю и сразу пойду.</div>
+  </div>
+
+</div>
+
+<!-- ===== ТЕСТЫ ===== -->
+<div class="section" id="tests">
+  <div class="section-title">✏️ Тесты</div>
+
+  <div class="test-block">
+    <p><b>1. Выбери правильный вариант (了 или 没):</b></p>
+    <p>我 ___ 吃早饭。 (Я не завтракал)</p>
+    <button onclick="checkTest(this, '没')">没</button>
+    <button onclick="checkTest(this, '了')">了</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>2. Выбери правильный вариант (了 или 没):</b></p>
+    <p>我吃 ___ 晚饭。 (Я поужинал)</p>
+    <button onclick="checkTest(this, '了')">了</button>
+    <button onclick="checkTest(this, '没')">没</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>3. Вставь 因为 или 所以:</b></p>
+    <p>___ 玛丽想家，___ 她哭了。</p>
+    <button onclick="checkTest(this, '因为...所以...')">因为...所以...</button>
+    <button onclick="checkTest(this, '所以...因为...')">所以...因为...</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>4. Выбери правильный запрет:</b></p>
+    <p>___ 哭了！ (Не плачь!)</p>
+    <button onclick="checkTest(this, '别')">别</button>
+    <button onclick="checkTest(this, '不')">不</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>5. Переведи: 我是不是得了肠炎？</b></p>
+    <button onclick="checkTest(this, 'Неужели я заболел энтеритом?')">Неужели я заболел энтеритом?</button>
+    <button onclick="checkTest(this, 'Я точно не болею энтеритом')">Я точно не болею энтеритом</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>6. Выбери правильный порядок:</b></p>
+    <p>___ 吃了晚饭 ___ 去。 (Поужинаю и сразу пойду)</p>
+    <button onclick="checkTest(this, '就...就...')">就...就...</button>
+    <button onclick="checkTest(this, '...就...')">...就...</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>7. Выбери правильный перевод: 别难过了</b></p>
+    <button onclick="checkTest(this, 'Не грусти больше')">Не грусти больше</button>
+    <button onclick="checkTest(this, 'Будь грустным')">Будь грустным</button>
+    <p class="result"></p>
+  </div>
+
+  <div class="test-block">
+    <p><b>8. Выбери правильный вариант: 化验结果出来了 ___ ？</b></p>
+    <button onclick="checkTest(this, '吗')">吗</button>
+    <button onclick="checkTest(this, '呢')">呢</button>
+    <p class="result"></p>
+  </div>
+
+</div>
+
+<script>
+function checkTest(btn, correct) {
+  const block = btn.parentElement;
+  const result = block.querySelector('.result');
+  if (btn.textContent.trim() === correct) {
+    result.textContent = '✅ Правильно!';
+    result.style.color = '#27AE60';
+  } else {
+    result.textContent = '❌ Неправильно. Правильный ответ: ' + correct;
+    result.style.color = '#C0392B';
+  }
+}
+</script>
