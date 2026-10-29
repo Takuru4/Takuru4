@@ -1,11 +1,326 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Меню</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汉语教程 · Учебник</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #FBF7EF;
+    color: #2D2A26;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 15px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px 15px;
+    background: linear-gradient(135deg, #FFF9F0 0%, #F5EDE3 100%);
+    border-radius: 16px;
+    border: 1px solid #E8E0D0;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #C0392B;
+    font-family: 'Georgia', serif;
+  }
+
+  .header p {
+    margin-top: 8px;
+    color: #6B6B6B;
+    font-size: 14px;
+  }
+
+  /* ===== ЭКРАН 1: ВЫБОР КНИГИ ===== */
+  .screen {
+    display: none;
+  }
+
+  .screen.active {
+    display: block;
+  }
+
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .book-card {
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid #E8E0D0;
+    border-radius: 16px;
+    padding: 25px;
+    text-decoration: none;
+    color: #2D2A26;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: all 0.2s;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .book-card:hover {
+    border-color: #C0392B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .book-card .book-cn {
+    font-size: 28px;
+    font-weight: 700;
+    color: #C0392B;
+    font-family: 'Georgia', serif;
+    margin-bottom: 6px;
+  }
+
+  .book-card .book-ru {
+    font-size: 14px;
+    color: #6B6B6B;
+    font-weight: 600;
+  }
+
+  .book-card .book-lessons {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #2E7D32;
+    background: #E8F5E9;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+
+  /* ===== ЭКРАН 2: ВЫБОР ГЛАВЫ ===== */
+  .back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 8px 16px;
+    background: #FFFFFF;
+    border: 1px solid #E8E0D0;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #2D2A26;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .back-button:hover {
+    border-color: #C0392B;
+    color: #C0392B;
+  }
+
+  .screen-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #C0392B;
+    display: inline-block;
+  }
+
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .lesson-card {
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid #E8E0D0;
+    border-radius: 12px;
+    padding: 15px;
+    text-decoration: none;
+    color: #2D2A26;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .lesson-card:hover {
+    border-color: #C0392B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .lesson-card .lesson-num {
+    font-size: 12px;
+    color: #6B6B6B;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .lesson-card .lesson-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 6px;
+    color: #C0392B;
+    font-family: 'Georgia', serif;
+  }
+
+  .lesson-card .lesson-ru {
+    font-size: 12px;
+    color: #2D2A26;
+    margin-top: 4px;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid #E8E0D0;
+    font-size: 11px;
+    color: #6B6B6B;
+  }
+
+  @media (max-width: 600px) {
+    .book-grid { grid-template-columns: 1fr; }
+    .lesson-grid { grid-template-columns: repeat(3, 1fr); }
+    .header h1 { font-size: 22px; }
+  }
+
+  @media (max-width: 400px) {
+    .lesson-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
 </head>
 <body>
-<h1>Меню уроков</h1>
-<a href="6lesson.html">Урок 6</a>
+
+<!-- ===== ШАПКА ===== -->
+<div class="header">
+  <h1>📚 汉语教程</h1>
+  <p>Интерактивный учебник китайского языка</p>
+</div>
+
+<!-- ===== ЭКРАН 1: ВЫБОР КНИГИ ===== -->
+<div id="screen-books" class="screen active">
+  <div class="book-grid">
+
+    <div class="book-card" onclick="showLessons('book2')">
+      <div class="book-cn">第二册 上</div>
+      <div class="book-ru">Книга 2 · часть 1</div>
+      <div class="book-lessons">Уроки 1–12</div>
+    </div>
+
+    <div class="book-card" onclick="showLessons('book3')">
+      <div class="book-cn">第二册 下</div>
+      <div class="book-ru">Книга 2 · часть 2</div>
+      <div class="book-lessons">Уроки 13–25</div>
+    </div>
+
+    <div class="book-card" onclick="showLessons('book4')">
+      <div class="book-cn">第三册</div>
+      <div class="book-ru">Книга 3</div>
+      <div class="book-lessons">Уроки 1–?</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== ЭКРАН 2: ВЫБОР ГЛАВЫ ===== -->
+<div id="screen-lessons" class="screen">
+  <a class="back-button" onclick="showBooks()">← К выбору книги</a>
+  <div class="screen-title" id="lessons-title">Выбор урока</div>
+  <div class="lesson-grid" id="lessons-grid">
+    <!-- Сюда подставляются кнопки уроков через JavaScript -->
+  </div>
+</div>
+
+<!-- ===== ПОДВАЛ ===== -->
+<div class="footer">
+  <p>汉语教程 · Интерактивный учебник китайского языка</p>
+</div>
+
+<script>
+// ===== ДАННЫЕ О КНИГАХ =====
+var books = {
+  book2: {
+    title: '第二册 上 · Книга 2 (часть 1)',
+    lessons: [
+      { num: 1, file: '1lesson.html' },
+      { num: 2, file: '2lesson.html' },
+      { num: 3, file: '3lesson.html' },
+      { num: 4, file: '4lesson.html' },
+      { num: 5, file: '5lesson.html' },
+      { num: 6, file: '6lesson.html' },
+      { num: 7, file: '7lesson.html' },
+      { num: 8, file: '8lesson.html' },
+      { num: 9, file: '9lesson.html' },
+      { num: 10, file: '10lesson.html' },
+      { num: 11, file: '11lesson.html' },
+      { num: 12, file: '12lesson.html' }
+    ]
+  },
+  book3: {
+    title: '第二册 下 · Книга 2 (часть 2)',
+    lessons: [
+      { num: 13, file: '13lesson.html' },
+      { num: 14, file: '14lesson.html' },
+      { num: 15, file: '15lesson.html' },
+      { num: 16, file: '16lesson.html' },
+      { num: 17, file: '17lesson.html' },
+      { num: 18, file: '18lesson.html' },
+      { num: 19, file: '19lesson.html' },
+      { num: 20, file: '20lesson.html' },
+      { num: 21, file: '21lesson.html' },
+      { num: 22, file: '22lesson.html' },
+      { num: 23, file: '23lesson.html' },
+      { num: 24, file: '24lesson.html' },
+      { num: 25, file: '25lesson.html' }
+    ]
+  },
+  book4: {
+    title: '第三册 · Книга 3',
+    lessons: [
+      { num: 1, file: '1lesson.html' },
+      { num: 2, file: '2lesson.html' },
+      { num: 3, file: '3lesson.html' }
+      // ... добавишь остальные
+    ]
+  }
+};
+
+// ===== ПЕРЕКЛЮЧЕНИЕ ЭКРАНОВ =====
+function showBooks() {
+  document.getElementById('screen-books').classList.add('active');
+  document.getElementById('screen-lessons').classList.remove('active');
+}
+
+function showLessons(bookKey) {
+  var book = books[bookKey];
+  if (!book) return;
+
+  // Ставим заголовок
+  document.getElementById('lessons-title').textContent = book.title;
+
+  // Строим кнопки уроков
+  var grid = document.getElementById('lessons-grid');
+  grid.innerHTML = '';
+
+  book.lessons.forEach(function(lesson) {
+    var card = document.createElement('a');
+    card.href = lesson.file;
+    card.className = 'lesson-card';
+    card.innerHTML = '<div class="lesson-num">Урок ' + lesson.num + '</div>';
+    grid.appendChild(card);
+  });
+
+  // Показываем экран уроков
+  document.getElementById('screen-books').classList.remove('active');
+  document.getElementById('screen-lessons').classList.add('active');
+}
+</script>
+
 </body>
 </html>
