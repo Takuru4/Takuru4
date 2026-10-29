@@ -38,14 +38,8 @@
     font-size: 14px;
   }
 
-  /* ===== ЭКРАН 1: ВЫБОР КНИГИ ===== */
-  .screen {
-    display: none;
-  }
-
-  .screen.active {
-    display: block;
-  }
+  .screen { display: none; }
+  .screen.active { display: block; }
 
   .book-grid {
     display: grid;
@@ -98,7 +92,6 @@
     font-weight: 600;
   }
 
-  /* ===== ЭКРАН 2: ВЫБОР ГЛАВЫ ===== */
   .back-button {
     display: inline-block;
     margin-bottom: 20px;
@@ -161,20 +154,6 @@
     letter-spacing: 1px;
   }
 
-  .lesson-card .lesson-name {
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 6px;
-    color: #C0392B;
-    font-family: 'Georgia', serif;
-  }
-
-  .lesson-card .lesson-ru {
-    font-size: 12px;
-    color: #2D2A26;
-    margin-top: 4px;
-  }
-
   .footer {
     text-align: center;
     margin-top: 40px;
@@ -197,7 +176,6 @@
 </head>
 <body>
 
-<!-- ===== ШАПКА ===== -->
 <div class="header">
   <h1>📚 汉语教程</h1>
   <p>Интерактивный учебник китайского языка</p>
@@ -207,22 +185,16 @@
 <div id="screen-books" class="screen active">
   <div class="book-grid">
 
-    <div class="book-card" onclick="showLessons('book2')">
+    <div class="book-card" onclick="showLessons('book1')">
       <div class="book-cn">第二册 上</div>
       <div class="book-ru">Книга 2 · часть 1</div>
       <div class="book-lessons">Уроки 1–12</div>
     </div>
 
-    <div class="book-card" onclick="showLessons('book3')">
+    <div class="book-card" onclick="showLessons('book2')">
       <div class="book-cn">第二册 下</div>
       <div class="book-ru">Книга 2 · часть 2</div>
       <div class="book-lessons">Уроки 13–25</div>
-    </div>
-
-    <div class="book-card" onclick="showLessons('book4')">
-      <div class="book-cn">第三册</div>
-      <div class="book-ru">Книга 3</div>
-      <div class="book-lessons">Уроки 1–?</div>
     </div>
 
   </div>
@@ -232,66 +204,52 @@
 <div id="screen-lessons" class="screen">
   <a class="back-button" onclick="showBooks()">← К выбору книги</a>
   <div class="screen-title" id="lessons-title">Выбор урока</div>
-  <div class="lesson-grid" id="lessons-grid">
-    <!-- Сюда подставляются кнопки уроков через JavaScript -->
-  </div>
+  <div class="lesson-grid" id="lessons-grid"></div>
 </div>
 
-<!-- ===== ПОДВАЛ ===== -->
 <div class="footer">
   <p>汉语教程 · Интерактивный учебник китайского языка</p>
 </div>
 
 <script>
-// ===== ДАННЫЕ О КНИГАХ =====
 var books = {
   book1: {
     title: '第二册 上 · Книга 2 (часть 1)',
     lessons: [
-      { num: 1, file: '1lesson.html' },
-      { num: 2, file: '2lesson.html' },
-      { num: 3, file: '3lesson.html' },
-      { num: 4, file: '4lesson.html' },
-      { num: 5, file: '5lesson.html' },
-      { num: 6, file: '6lesson.html' },
-      { num: 7, file: '7lesson.html' },
-      { num: 8, file: '8lesson.html' },
-      { num: 9, file: '9lesson.html' },
-      { num: 10, file: '10lesson.html' },
-      { num: 11, file: '11lesson.html' },
-      { num: 12, file: '12lesson.html' }
+      { num: 1, file: 'book1/1lesson.html' },
+      { num: 2, file: 'book1/2lesson.html' },
+      { num: 3, file: 'book1/3lesson.html' },
+      { num: 4, file: 'book1/4lesson.html' },
+      { num: 5, file: 'book1/5lesson.html' },
+      { num: 6, file: 'book1/6lesson.html' },
+      { num: 7, file: 'book1/7lesson.html' },
+      { num: 8, file: 'book1/8lesson.html' },
+      { num: 9, file: 'book1/9lesson.html' },
+      { num: 10, file: 'book1/10lesson.html' },
+      { num: 11, file: 'book1/11lesson.html' },
+      { num: 12, file: 'book1/12lesson.html' }
     ]
   },
   book2: {
     title: '第二册 下 · Книга 2 (часть 2)',
     lessons: [
-      { num: 13, file: '13lesson.html' },
-      { num: 14, file: '14lesson.html' },
-      { num: 15, file: '15lesson.html' },
-      { num: 16, file: '16lesson.html' },
-      { num: 17, file: '17lesson.html' },
-      { num: 18, file: '18lesson.html' },
-      { num: 19, file: '19lesson.html' },
-      { num: 20, file: '20lesson.html' },
-      { num: 21, file: '21lesson.html' },
-      { num: 22, file: '22lesson.html' },
-      { num: 23, file: '23lesson.html' },
-      { num: 24, file: '24lesson.html' },
-      { num: 25, file: '25lesson.html' }
-    ]
-  },
-  book3: {
-    title: '第三册 · Книга 3',
-    lessons: [
-      { num: 1, file: '1lesson.html' },
-      { num: 2, file: '2lesson.html' },
-      { num: 3, file: '3lesson.html' }
-      // ... добавишь остальные
+      { num: 13, file: 'book2/13lesson.html' },
+      { num: 14, file: 'book2/14lesson.html' },
+      { num: 15, file: 'book2/15lesson.html' },
+      { num: 16, file: 'book2/16lesson.html' },
+      { num: 17, file: 'book2/17lesson.html' },
+      { num: 18, file: 'book2/18lesson.html' },
+      { num: 19, file: 'book2/19lesson.html' },
+      { num: 20, file: 'book2/20lesson.html' },
+      { num: 21, file: 'book2/21lesson.html' },
+      { num: 22, file: 'book2/22lesson.html' },
+      { num: 23, file: 'book2/23lesson.html' },
+      { num: 24, file: 'book2/24lesson.html' },
+      { num: 25, file: 'book2/25lesson.html' }
     ]
   }
 };
 
-// ===== ПЕРЕКЛЮЧЕНИЕ ЭКРАНОВ =====
 function showBooks() {
   document.getElementById('screen-books').classList.add('active');
   document.getElementById('screen-lessons').classList.remove('active');
@@ -301,10 +259,8 @@ function showLessons(bookKey) {
   var book = books[bookKey];
   if (!book) return;
 
-  // Ставим заголовок
   document.getElementById('lessons-title').textContent = book.title;
 
-  // Строим кнопки уроков
   var grid = document.getElementById('lessons-grid');
   grid.innerHTML = '';
 
@@ -316,7 +272,6 @@ function showLessons(bookKey) {
     grid.appendChild(card);
   });
 
-  // Показываем экран уроков
   document.getElementById('screen-books').classList.remove('active');
   document.getElementById('screen-lessons').classList.add('active');
 }
