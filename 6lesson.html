@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汉语教程 第6课 · Полный комплект</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@400;600&display=swap');
+
+  :root {
+    --bg: #FBF7EF;
+    --card: #FFFFFF;
+    --ink: #2D2A26;
+    --red: #C0392B;
+    --green: #2E7D32;
+    --blue: #1E5A8A;
+    --gray: #6B6B6B;
+    --border: #E8E0D0;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    background: var(--bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    padding: 20px 15px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ШАПКА */
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 25px 15px;
+    background: linear-gradient(135deg, #FFF9F0 0%, #F5EDE3 100%);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+
+  .header h1 {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .header h1 span {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .header p {
+    margin-top: 6px;
+    color: var(--gray);
+    font-size: 13px;
+  }
+
+  /* НАВИГАЦИЯ */
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    padding: 12px 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .nav a {
+    display: inline-block;
+    padding: 10px 16px;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 25px;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .nav a:hover {
+    background: var(--red);
+    color: white;
+    border-color: var(--red);
+  }
+
+  /* СЕКЦИИ */
+  .section {
+    margin-bottom: 40px;
+    scroll-margin-top: 80px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--red);
+    display: inline-block;
+    color: var(--ink);
+  }
+
+  /* СЕТКА КАРТОЧЕК */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  /* КАРТОЧКА СЛОВА */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: var(--shadow);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .hanzi {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1.2;
+  }
+
+  .pinyin {
+    font-size: 14px;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  .translation {
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .key {
+    display: inline-block;
+    background: #F5F0E8;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: var(--gray);
+    margin-bottom: 6px;
+    font-family: 'Noto Serif SC', serif;
+  }
+
+  .example {
+    font-size: 12px;
+    color: var(--green);
+    background: #F0F7F0;
+    border-left: 3px solid var(--green);
+    padding: 5px 8px;
+    border-radius: 0 6px 6px 0;
+    line-height: 1.4;
+  }
+
+  .example .ru {
+    color: var(--gray);
+    font-size: 11px;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* БЛОКИ ПОВТОРЕНИЯ */
+  .review-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .review-block h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+
+  .review-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .review-item {
+    padding: 10px 16px;
+    background: #F5F0E8;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--red);
+  }
+
+  .review-item.pinyin-only {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  /* ТЕСТЫ */
+  .quiz-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  .quiz-card .question {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .quiz-card .question .hanzi-inline {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--red);
+    font-size: 16px;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-option {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #FAFAFA;
+  }
+
+  .quiz-option:hover {
+    border-color: var(--blue);
+    background: #F0F5FA;
+  }
+
+  .quiz-option.correct {
+    border-color: var(--green);
+    background: #E8F5E9;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .quiz-option.wrong {
+    border-color: var(--red);
+    background: #FDECEA;
+    color: var(--red);
+  }
+
+  .quiz-option .feedback {
+    display: none;
+    font-size: 11px;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  .quiz-option.correct .feedback,
+  .quiz-option.wrong .feedback {
+    display: block;
+  }
+
+  /* ГРАММАТИКА */
+  .grammar-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+
+  .grammar-block h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+
+  .grammar-block p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .grammar-block .formula {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    background: #F5F0E8;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin: 6px 0;
+  }
+
+  /* ПОДВАЛ */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  /* ПЕЧАТЬ */
+  @media print {
+    body { padding: 15px; background: white; }
+    .nav { display: none; }
+    .card, .grammar-block, .quiz-card, .review-block { box-shadow: none; }
+  }
+
+  /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+  @media (max-width: 600px) {
+    body { padding: 12px 10px; }
+    .grid { grid-template-columns: 1fr; }
+    .hanzi { font-size: 28px; }
+    .card { padding: 12px; }
+    .review-item { font-size: 20px; padding: 8px 12px; }
+    .review-item.pinyin-only { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== ШАПКА ===== -->
+<div class="header">
+  <h1>汉语教程 · 第3版 · 第二册 上</h1>
+  <h1><span>第6课 · 我比你更喜欢音乐</span></h1>
+  <p>Слова · Ключи · Тесты · Самопроверка</p>
+</div>
+
+<!-- ===== НАВИГАЦИЯ ===== -->
+<div class="nav">
+  <a href="#words">📚 Слова</a>
+  <a href="#grammar">📖 Грамматика</a>
+  <a href="#quiz">✏️ Тесты</a>
+  <a href="#review-hanzi">🔤 Повторение (иероглифы)</a>
+  <a href="#review-pinyin">🔡 Повторение (пиньинь)</a>
+</div>
+
+<!-- ===== СЛОВА ===== -->
+<div id="words" class="section">
+  <div class="section-title">📚 Слова урока</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">变</span>
+        <span class="pinyin">biàn</span>
+        <span class="translation">становиться другим</span>
+      </div>
+      <div class="key">键: 亦 + 又</div>
+      <div class="example">天气变冷了。<span class="ru">Погода стала холодной.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">化</span>
+        <span class="pinyin">huà</span>
+        <span class="translation">превращаться</span>
+      </div>
+      <div class="key">键: 亻 + 匕</div>
+      <div class="example">变化很大。<span class="ru">Изменения большие.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">比</span>
+        <span class="pinyin">bǐ</span>
+        <span class="translation">чем (сравнение)</span>
+      </div>
+      <div class="key">键: 比</div>
+      <div class="example">上海比北京大。<span class="ru">Шанхай больше Пекина.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">更</span>
+        <span class="pinyin">gèng</span>
+        <span class="translation">ещё более</span>
+      </div>
+      <div class="key">键: 一 + 曰 + 攵</div>
+      <div class="example">上海比过去更漂亮。<span class="ru">Шанхай ещё красивее.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">最</span>
+        <span class="pinyin">zuì</span>
+        <span class="translation">самый</span>
+      </div>
+      <div class="key">键: 日 + 取</div>
+      <div class="example">最大的城市。<span class="ru">Самый большой город.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">人</span>
+        <span class="pinyin">rén</span>
+        <span class="translation">человек</span>
+      </div>
+      <div class="key">键: 人</div>
+      <div class="example">人口很多。<span class="ru">Население большое.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">口</span>
+        <span class="pinyin">kǒu</span>
+        <span class="translation">рот / счётное для людей</span>
+      </div>
+      <div class="key">键: 口</div>
+      <div class="example">三口人。<span class="ru">Три человека (в семье).</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">城</span>
+        <span class="pinyin">chéng</span>
+        <span class="translation">город</span>
+      </div>
+      <div class="key">键: 土 + 成</div>
+      <div class="example">城市很大。<span class="ru">Город большой.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">市</span>
+        <span class="pinyin">shì</span>
+        <span class="translation">город / рынок</span>
+      </div>
+      <div class="key">键: 亠 + 巾</div>
+      <div class="example">城市。<span class="ru">Город.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">增</span>
+        <span class="pinyin">zēng</span>
+        <span class="translation">увеличивать</span>
+      </div>
+      <div class="key">键: 土 + 曾</div>
+      <div class="example">人口增加了。<span class="ru">Население увеличилось.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">加</span>
+        <span class="pinyin">jiā</span>
+        <span class="translation">прибавлять</span>
+      </div>
+      <div class="key">键: 力 + 口</div>
+      <div class="example">增加。<span class="ru">Увеличивать.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">建</span>
+        <span class="pinyin">jiàn</span>
+        <span class="translation">строить</span>
+      </div>
+      <div class="key">键: 廴 + 聿</div>
+      <div class="example">建筑。<span class="ru">Здание.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">筑</span>
+        <span class="pinyin">zhù</span>
+        <span class="translation">возводить</span>
+      </div>
+      <div class="key">键: 竹 + 巩</div>
+      <div class="example">建筑。<span class="ru">Здание.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">过</span>
+        <span class="pinyin">guò</span>
+        <span class="translation">проходить</span>
+      </div>
+      <div class="key">键: 辶 + 寸</div>
+      <div class="example">过去。<span class="ru">Прошлое.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">去</span>
+        <span class="pinyin">qù</span>
+        <span class="translation">уходить</span>
+      </div>
+      <div class="key">键: 土 + 厶</div>
+      <div class="example">过去。<span class="ru">Прошлое.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">冬</span>
+        <span class="pinyin">dōng</span>
+        <span class="translation">зима</span>
+      </div>
+      <div class="key">键: 夂 + 冫</div>
+      <div class="example">冬天很冷。<span class="ru">Зимой холодно.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">天</span>
+        <span class="pinyin">tiān</span>
+        <span class="translation">небо / день</span>
+      </div>
+      <div class="key">键: 大 + 一</div>
+      <div class="example">天气。<span class="ru">Погода.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">暖</span>
+        <span class="pinyin">nuǎn</span>
+        <span class="translation">тепло</span>
+      </div>
+      <div class="key">键: 日 + 爰</div>
+      <div class="example">暖和。<span class="ru">Тепло.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">和</span>
+        <span class="pinyin">hé</span>
+        <span class="translation">и / мягкий</span>
+      </div>
+      <div class="key">键: 禾 + 口</div>
+      <div class="example">暖和。<span class="ru">Тепло.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">气</span>
+        <span class="pinyin">qì</span>
+        <span class="translation">воздух / ци</span>
+      </div>
+      <div class="key">键: 气</div>
+      <div class="example">天气。<span class="ru">Погода.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">预</span>
+        <span class="pinyin">yù</span>
+        <span class="translation">заранее</span>
+      </div>
+      <div class="key">键: 予 + 页</div>
+      <div class="example">预报。<span class="ru">Прогноз.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">报</span>
+        <span class="pinyin">bào</span>
+        <span class="translation">сообщать</span>
+      </div>
+      <div class="key">键: 扌 + 卩</div>
+      <div class="example">预报。<span class="ru">Прогноз.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">温</span>
+        <span class="pinyin">wēn</span>
+        <span class="translation">тепло / температура</span>
+      </div>
+      <div class="key">键: 氵 + 昷</div>
+      <div class="example">气温。<span class="ru">Температура воздуха.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">高</span>
+        <span class="pinyin">gāo</span>
+        <span class="translation">высокий</span>
+      </div>
+      <div class="key">键: 高</div>
+      <div class="example">很高。<span class="ru">Очень высокий.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">度</span>
+        <span class="pinyin">dù</span>
+        <span class="translation">градус</span>
+      </div>
+      <div class="key">键: 广 + 廿</div>
+      <div class="example">五度。<span class="ru">5 градусов.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">屋</span>
+        <span class="pinyin">wū</span>
+        <span class="translation">комната / дом</span>
+      </div>
+      <div class="key">键: 尸 + 至</div>
+      <div class="example">屋子。<span class="ru">Комната.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">子</span>
+        <span class="pinyin">zi</span>
+        <span class="translation">суффикс / ребёнок</span>
+      </div>
+      <div class="key">键: 子</div>
+      <div class="example">屋子。<span class="ru">Комната.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">感</span>
+        <span class="pinyin">gǎn</span>
+        <span class="translation">чувствовать</span>
+      </div>
+      <div class="key">键: 咸 + 心</div>
+      <div class="example">感觉。<span class="ru">Чувствовать.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">觉</span>
+        <span class="pinyin">jué</span>
+        <span class="translation">ощущать</span>
+      </div>
+      <div class="key">键: 学 + 见</div>
+      <div class="example">感觉。<span class="ru">Чувствовать.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">家</span>
+        <span class="pinyin">jiā</span>
+        <span class="translation">дом / семья</span>
+      </div>
+      <div class="key">键: 宀 + 豕</div>
+      <div class="example">家庭。<span class="ru">Семья.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">庭</span>
+        <span class="pinyin">tíng</span>
+        <span class="translation">двор</span>
+      </div>
+      <div class="key">键: 广 + 廷</div>
+      <div class="example">家庭。<span class="ru">Семья.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">旅</span>
+        <span class="pinyin">lǚ</span>
+        <span class="translation">путешествие</span>
+      </div>
+      <div class="key">键: 方 + 氐</div>
+      <div class="example">旅馆。<span class="ru">Гостиница.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">馆</span>
+        <span class="pinyin">guǎn</span>
+        <span class="translation">здание / зал</span>
+      </div>
+      <div class="key">键: 饣 + 官</div>
+      <div class="example">旅馆。<span class="ru">Гостиница.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">饭</span>
+        <span class="pinyin">fàn</span>
+        <span class="translation">еда</span>
+      </div>
+      <div class="key">键: 饣 + 反</div>
+      <div class="example">饭店。<span class="ru">Ресторан.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">店</span>
+        <span class="pinyin">diàn</span>
+        <span class="translation">магазин / заведение</span>
+      </div>
+      <div class="key">键: 广 + 占</div>
+      <div class="example">饭店。<span class="ru">Ресторан.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">可</span>
+        <span class="pinyin">kě</span>
+        <span class="translation">можно / но</span>
+      </div>
+      <div class="key">键: 丁 + 口</div>
+      <div class="example">可是。<span class="ru">Но.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">是</span>
+        <span class="pinyin">shì</span>
+        <span class="translation">быть / есть</span>
+      </div>
+      <div class="key">键: 日 + 正</div>
+      <div class="example">可是。<span class="ru">Но.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">迷</span>
+        <span class="pinyin">mí</span>
+        <span class="translation">фанат</span>
+      </div>
+      <div class="key">键: 米 + 辶</div>
+      <div class="example">音乐迷。<span class="ru">Фанат музыки.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">光</span>
+        <span class="pinyin">guāng</span>
+        <span class="translation">только / свет</span>
+      </div>
+      <div class="key">键: 光</div>
+      <div class="example">光CD就有几百张。<span class="ru">Только CD уже несколько сотен.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">古</span>
+        <span class="pinyin">gǔ</span>
+        <span class="translation">древний</span>
+      </div>
+      <div class="key">键: 古</div>
+      <div class="example">古典。<span class="ru">Классический.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">典</span>
+        <span class="pinyin">diǎn</span>
+        <span class="translation">канон / классика</span>
+      </div>
+      <div class="key">键: 曲 + 八</div>
+      <div class="example">古典。<span class="ru">Классический.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">现</span>
+        <span class="pinyin">xiàn</span>
+        <span class="translation">сейчас / настоящее</span>
+      </div>
+      <div class="key">键: 王 + 见</div>
+      <div class="example">现代。<span class="ru">Современный.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">代</span>
+        <span class="pinyin">dài</span>
+        <span class="translation">эпоха / поколение</span>
+      </div>
+      <div class="key">键: 亻 + 弋</div>
+      <div class="example">现代。<span class="ru">Современный.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">世</span>
+        <span class="pinyin">shì</span>
+        <span class="translation">мир / поколение</span>
+      </div>
+      <div class="key">键: 世</div>
+      <div class="example">世界。<span class="ru">Мир.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">界</span>
+        <span class="pinyin">jiè</span>
+        <span class="translation">граница / мир</span>
+      </div>
+      <div class="key">键: 田 + 介</div>
+      <div class="example">世界。<span class="ru">Мир.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">名</span>
+        <span class="pinyin">míng</span>
+        <span class="translation">известный / имя</span>
+      </div>
+      <div class="key">键: 夕 + 口</div>
+      <div class="example">名曲。<span class="ru">Знаменитая мелодия.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">曲</span>
+        <span class="pinyin">qǔ</span>
+        <span class="translation">мелодия</span>
+      </div>
+      <div class="key">键: 曲</div>
+      <div class="example">名曲。<span class="ru">Знаменитая мелодия.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">民</span>
+        <span class="pinyin">mín</span>
+        <span class="translation">народ</span>
+      </div>
+      <div class="key">键: 民</div>
+      <div class="example">民歌。<span class="ru">Народная песня.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">歌</span>
+        <span class="pinyin">gē</span>
+        <span class="translation">песня</span>
+      </div>
+      <div class="key">键: 哥 + 欠</div>
+      <div class="example">民歌。<span class="ru">Народная песня.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">流</span>
+        <span class="pinyin">liú</span>
+        <span class="translation">течь</span>
+      </div>
+      <div class="key">键: 氵 + 㐬</div>
+      <div class="example">流行。<span class="ru">Популярный.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">行</span>
+        <span class="pinyin">xíng</span>
+        <span class="translation">идти / ходить</span>
+      </div>
+      <div class="key">键: 彳 + 亍</div>
+      <div class="example">流行。<span class="ru">Популярный.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">年</span>
+        <span class="pinyin">nián</span>
+        <span class="translation">год</span>
+      </div>
+      <div class="key">键: 年</div>
+      <div class="example">年轻。<span class="ru">Молодой.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">轻</span>
+        <span class="pinyin">qīng</span>
+        <span class="translation">лёгкий / молодой</span>
+      </div>
+      <div class="key">键: 车 + 圣</div>
+      <div class="example">年轻。<span class="ru">Молодой.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">词</span>
+        <span class="pinyin">cí</span>
+        <span class="translation">слово / текст</span>
+      </div>
+      <div class="key">键: 讠 + 司</div>
+      <div class="example">歌词。<span class="ru">Текст песни.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">有</span>
+        <span class="pinyin">yǒu</span>
+        <span class="translation">иметь</span>
+      </div>
+      <div class="key">键: 月 + 又</div>
+      <div class="example">有些。<span class="ru">Некоторые.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">些</span>
+        <span class="pinyin">xiē</span>
+        <span class="translation">немного / несколько</span>
+      </div>
+      <div class="key">键: 此 + 二</div>
+      <div class="example">有些。<span class="ru">Некоторые.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">遥</span>
+        <span class="pinyin">yáo</span>
+        <span class="translation">далёкий</span>
+      </div>
+      <div class="key">键: 辶 + 䍃</div>
+      <div class="example">遥远。<span class="ru">Далёкий.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">远</span>
+        <span class="pinyin">yuǎn</span>
+        <span class="translation">даль</span>
+      </div>
+      <div class="key">键: 辶 + 元</div>
+      <div class="example">遥远。<span class="ru">Далёкий.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">也</span>
+        <span class="pinyin">yě</span>
+        <span class="translation">также</span>
+      </div>
+      <div class="key">键: 也</div>
+      <div class="example">也许。<span class="ru">Возможно.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">许</span>
+        <span class="pinyin">xǔ</span>
+        <span class="translation">разрешать / возможно</span>
+      </div>
+      <div class="key">键: 讠 + 午</div>
+      <div class="example">也许。<span class="ru">Возможно.</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="hanzi">首</span>
+        <span class="pinyin">shǒu</span>
+        <span class="translation">счётное для песен</span>
+      </div>
+      <div class="key">键: 首</div>
+      <div class="example">一首歌。<span class="ru">Одна песня.</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== ГРАММАТИКА ===== -->
+<div id="grammar" class="section">
+  <div class="section-title">📖 Грамматика урока</div>
+
+  <div class="grammar-block">
+    <h3>1. Сравнение: A 比 B + прилагательное</h3>
+    <p>Конструкция для сравнения двух предметов или людей.</p>
+    <span class="formula">A 比 B + 形容词</span>
+    <div class="example">北京比上海冷。<span class="ru">Пекин холоднее Шанхая.</span></div>
+    <div class="example">上海比过去更漂亮。<span class="ru">Шанхай красивее, чем раньше.</span></div>
+  </div>
+
+  <div class="grammar-block">
+    <h3>2. Усиление: 最 / 更</h3>
+    <p><b>最</b> — превосходная степень (самый). <b>更</b> — сравнительная (ещё более).</p>
+    <span class="formula">最 + 形容词 = самый</span><br>
+    <span class="formula">更 + 形容词 = ещё более</span>
+    <div class="example">这是中国最大的城市。<span class="ru">Это самый большой город Китая.</span></div>
+    <div class="example">上海比过去更漂亮了。<span class="ru">Шанхай стал ещё красивее.</span></div>
+  </div>
+
+  <div class="grammar-block">
+    <h3>3. Разница в степени</h3>
+    <p>Можно указать насколько одно отличается от другого.</p>
+    <span class="formula">A 比 B + 形容词 + 一点儿 / 得多 / 数量</span>
+    <div class="example">今天比昨天冷一点儿。<span class="ru">Сегодня немного холоднее, чем вчера.</span></div>
+    <div class="example">气温高五度。<span class="ru">Температура выше на 5 градусов.</span></div>
+  </div>
+
+  <div class="grammar-block">
+    <h3>4. 可是 — противопоставление</h3>
+    <p>Союз «но» для противопоставления двух фактов.</p>
+    <span class="formula">..., 可是 ...</span>
+    <div class="example">上海气温高，可是屋子里没有暖气。<span class="ru">В Шанхае тепло, но в домах нет отопления.</span></div>
+  </div>
+</div>
+
+<!-- ===== ТЕСТЫ ===== -->
+<div id="quiz" class="section">
+  <div class="section-title">✏️ Мини-тесты на грамматику</div>
+
+  <!-- Тест 1 -->
+  <div class="quiz-card">
+    <div class="question">1. Выбери правильную конструкцию: «Пекин холоднее Шанхая»</div>
+    <div class="quiz-options">
+      <div class="quiz-option" onclick="checkAnswer(this, true)">北京比上海冷。<span class="feedback">✅ Правильно!</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, false)">北京最上海冷。<span class="feedback">❌ Неверно. Нужно: 北京比上海冷。</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, false)">北京更上海冷。<span class="feedback">❌ Неверно. Нужно: 北京比上海冷。</span></div>
+
+
+  <!-- Тест 2 -->
+  <div class="quiz-card">
+    <div class="question">2. Выбери правильный вариант: «Шанхай стал ещё красивее»</div>
+    <div class="quiz-options">
+      <div class="quiz-option" onclick="checkAnswer(this, false)">上海最漂亮了。<span class="feedback">❌ Неверно. Нужно: 上海比过去更漂亮了。</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, true)">上海比过去更漂亮了。<span class="feedback">✅ Правильно!</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, false)">上海比过去最漂亮了。<
+    </div>
+  </div>
+    <!-- Тест 3 -->
+  <div class="quiz-card">
+    <div class="question">3. Выбери правильный перевод: «Это самый большой город Китая»</div>
+    <div class="quiz-options">
+      <div class="quiz-option" onclick="checkAnswer(this, false)">这是中国更大的城市。<span class="feedback">❌ Неверно. Нужно: 这是中国最大的城市。</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, true)">这是中国最大的城市。<span class="feedback">✅ Правильно!</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, false)">这是中国比大的城市。<span class="feedback">❌ Неверно. Нужно: 这是中国最大的城市。</span></div>
+    </div>
+  </div>
+
+  <!-- Тест 4 -->
+  <div class="quiz-card">
+    <div class="question">4. Выбери правильный вариант: «Сегодня немного холоднее, чем вчера»</div>
+    <div class="quiz-options">
+      <div class="quiz-option" onclick="checkAnswer(this, true)">今天比昨天冷一点儿。<span class="feedback">✅ Правильно!</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, false)">今天最昨天冷。<span class="feedback">❌ Неверно. Нужно: 今天比昨天冷一点儿。</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, false)">今天比昨天最冷。<span class="feedback">❌ Неверно. Нужно: 今天比昨天冷一点儿。</span></div>
+    </div>
+  </div>
+
+  <!-- Тест 5 -->
+  <div class="quiz-card">
+    <div class="question">5. Выбери правильный вариант: «В Шанхае тепло, но в домах нет отопления»</div>
+    <div class="quiz-options">
+      <div class="quiz-option" onclick="checkAnswer(this, true)">上海气温高，可是屋子里没有暖气。<span class="feedback">✅ Правильно!</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, false)">上海气温高，可是屋子里有暖气。<span class="feedback">❌ Неверно. Нужно: 上海气温高，可是屋子里没有暖气。</span></div>
+      <div class="quiz-option" onclick="checkAnswer(this, false)">上海气温高，所以屋子里没有暖气。<span class="feedback">❌ Неверно. Нужно: 上海气温高，可是屋子里没有暖气。</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ПОВТОРЕНИЕ: ИЕРОГЛИФЫ (целыми словами) ===== -->
+<div id="review-hanzi" class="section">
+  <div class="section-title">🔤 Повторение: иероглифы</div>
+  <div class="review-block">
+    <h3>Проверь себя: вспомни значение и чтение каждого слова</h3>
+    <div class="review-grid">
+      <div class="review-item">变化</div>
+      <div class="review-item">比</div>
+      <div class="review-item">更</div>
+      <div class="review-item">最</div>
+      <div class="review-item">人口</div>
+      <div class="review-item">城市</div>
+      <div class="review-item">增加</div>
+      <div class="review-item">建筑</div>
+      <div class="review-item">过去</div>
+      <div class="review-item">冬天</div>
+      <div class="review-item">天气</div>
+      <div class="review-item">暖和</div>
+      <div class="review-item">气温</div>
+      <div class="review-item">预报</div>
+      <div class="review-item">温度</div>
+      <div class="review-item">高</div>
+      <div class="review-item">度</div>
+      <div class="review-item">屋子</div>
+      <div class="review-item">感觉</div>
+      <div class="review-item">家庭</div>
+      <div class="review-item">旅馆</div>
+      <div class="review-item">饭店</div>
+      <div class="review-item">可是</div>
+      <div class="review-item">音乐迷</div>
+      <div class="review-item">光</div>
+      <div class="review-item">古典</div>
+      <div class="review-item">现代</div>
+      <div class="review-item">世界</div>
+      <div class="review-item">名曲</div>
+      <div class="review-item">民歌</div>
+      <div class="review-item">流行</div>
+      <div class="review-item">年轻</div>
+      <div class="review-item">歌词</div>
+      <div class="review-item">有些</div>
+      <div class="review-item">遥远</div>
+      <div class="review-item">也许</div>
+      <div class="review-item">一首</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ПОВТОРЕНИЕ: ПИНЬИНЬ (целыми словами) ===== -->
+<div id="review-pinyin" class="section">
+  <div class="section-title">🔡 Повторение: пиньинь</div>
+  <div class="review-block">
+    <h3>Проверь себя: вспомни иероглифы и значение по пиньиню</h3>
+    <div class="review-grid">
+      <div class="review-item pinyin-only">biànhuà</div>
+      <div class="review-item pinyin-only">bǐ</div>
+      <div class="review-item pinyin-only">gèng</div>
+      <div class="review-item pinyin-only">zuì</div>
+      <div class="review-item pinyin-only">rénkǒu</div>
+      <div class="review-item pinyin-only">chéngshì</div>
+      <div class="review-item pinyin-only">zēngjiā</div>
+      <div class="review-item pinyin-only">jiànzhù</div>
+      <div class="review-item pinyin-only">guòqù</div>
+      <div class="review-item pinyin-only">dōngtiān</div>
+      <div class="review-item pinyin-only">tiānqì</div>
+      <div class="review-item pinyin-only">nuǎnhuo</div>
+      <div class="review-item pinyin-only">qìwēn</div>
+      <div class="review-item pinyin-only">yùbào</div>
+      <div class="review-item pinyin-only">wēndù</div>
+      <div class="review-item pinyin-only">gāo</div>
+      <div class="review-item pinyin-only">dù</div>
+      <div class="review-item pinyin-only">wūzi</div>
+      <div class="review-item pinyin-only">gǎnjué</div>
+      <div class="review-item pinyin-only">jiātíng</div>
+      <div class="review-item pinyin-only">lǚguǎn</div>
+      <div class="review-item pinyin-only">fàndiàn</div>
+      <div class="review-item pinyin-only">kěshì</div>
+      <div class="review-item pinyin-only">yīnyuèmí</div>
+      <div class="review-item pinyin-only">guāng</div>
+      <div class="review-item pinyin-only">gǔdiǎn</div>
+      <div class="review-item pinyin-only">xiàndài</div>
+      <div class="review-item pinyin-only">shìjiè</div>
+      <div class="review-item pinyin-only">míngqǔ</div>
+      <div class="review-item pinyin-only">míngē</div>
+      <div class="review-item pinyin-only">liúxíng</div>
+      <div class="review-item pinyin-only">niánqīng</div>
+      <div class="review-item pinyin-only">gēcí</div>
+      <div class="review-item pinyin-only">yǒuxiē</div>
+      <div class="review-item pinyin-only">yáoyuǎn</div>
+      <div class="review-item pinyin-only">yěxǔ</div>
+      <div class="review-item pinyin-only">yìshǒu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ПОДВАЛ ===== -->
+<div class="footer">
+  <p>汉语教程 · 第3版 · 第二册 上 · 第6课 «我比你更喜欢音乐»</p>
+  <p>Сделано с ❤️ для изучения китайского</p>
+</div>
+
+<!-- ===== СКРИПТ ДЛЯ ТЕСТОВ ===== -->
+<script>
+function checkAnswer(element, isCorrect) {
+  // Сбрасываем все опции в этом вопросе
+  var options = element.parentElement.querySelectorAll('.quiz-option');
+  options.forEach(function(opt) {
+    opt.classList.remove('correct', 'wrong');
+  });
+
+  if (isCorrect) {
+    element.classList.add('correct');
+  } else {
+    element.classList.add('wrong');
+    // Показываем правильный ответ
+    options.forEach(function(opt) {
+      if (opt.getAttribute('onclick').includes('true')) {
+        opt.classList.add('correct');
+      }
+    });
+  }
+}
+</script>
+
+</body>
+</html>
