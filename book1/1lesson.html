@@ -36,31 +36,53 @@
     font-size:20px; font-weight:700; margin-bottom:20px; padding-bottom:8px;
     border-bottom:3px solid #C0392B; display:inline-block;
   }
-  .vocab-table { width:100%; border-collapse:collapse; }
-  .vocab-table th {
-    background:#F5F0E8; padding:10px; text-align:left;
-    font-size:13px; color:#6B6B6B; text-transform:uppercase; letter-spacing:1px;
+
+  /* НОВЫЙ ФОРМАТ СЛОВАРЯ — КАРТОЧКИ */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
   }
-  .vocab-table td {
-    padding:12px 10px; border-bottom:1px solid #F0E8D8;
-    font-size:15px; vertical-align:top;
+  .vocab-card {
+    background: #FBF7EF;
+    border: 1px solid #E8E0D0;
+    border-radius: 12px;
+    padding: 15px;
+    transition: 0.2s;
   }
-  .vocab-table tr:last-child td { border-bottom:none; }
-  .vocab-cn { font-size:20px; font-weight:700; color:#C0392B; font-family:'Georgia',serif; white-space:nowrap; }
-  .vocab-pinyin { color:#6B6B6B; font-size:13px; }
-  .vocab-ru { font-size:14px; }
-  .vocab-keys { font-size:12px; color:#8B7355; margin-top:4px; font-style:italic; line-height:1.5; }
-  .vocab-mnemonic { font-size:12px; color:#6B6B6B; margin-top:2px; line-height:1.5; }
-  .back-link {
-    display:inline-block; margin-top:20px; padding:8px 16px; background:#FFF;
-    border:1px solid #E8E0D0; border-radius:20px; text-decoration:none;
-    color:#2D2A26; font-size:14px; font-weight:600;
+  .vocab-card:hover { border-color: #C0392B; }
+  .vocab-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
   }
-  .back-link:hover { border-color:#C0392B; color:#C0392B; }
+  .vocab-cn { font-size: 24px; font-weight: 700; color: #C0392B; font-family: 'Georgia',serif; }
+  .vocab-pinyin { color: #6B6B6B; font-size: 14px; }
+  .vocab-ru { font-size: 14px; color: #2D2A26; margin-bottom: 8px; }
+  .vocab-keys {
+    font-size: 12px;
+    color: #8B7355;
+    line-height: 1.6;
+    background: #FFF;
+    border-radius: 8px;
+    padding: 8px 10px;
+    border: 1px solid #F0E8D8;
+  }
+  .vocab-keys b { color: #C0392B; }
+  .vocab-mnemonic {
+    font-size: 12px;
+    color: #6B6B6B;
+    margin-top: 6px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
   .example-box { background:#F5F0E8; padding:12px; border-radius:8px; margin-bottom:15px; }
   .example-cn { font-size:18px; font-weight:700; color:#C0392B; font-family:'Georgia',serif; }
   .example-pinyin { color:#6B6B6B; font-size:13px; margin-top:4px; }
   .example-ru { font-size:14px; margin-top:4px; }
+
   .hanzi-grid,.pinyin-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; }
   .hanzi-card,.pinyin-card {
     background:#FFF; border:1px solid #E8E0D0; border-radius:12px; padding:20px;
@@ -74,6 +96,7 @@
   .hanzi-back,.pinyin-back { display:none; color:#2D2A26; font-size:16px; }
   .hanzi-card.flipped .hanzi-front,.pinyin-card.flipped .pinyin-front { display:none; }
   .hanzi-card.flipped .hanzi-back,.pinyin-card.flipped .pinyin-back { display:block; }
+
   .test-block { margin-bottom:20px; padding:15px; background:#F5F0E8; border-radius:12px; }
   .test-block button {
     display:inline-block; margin:5px 5px 0 0; padding:8px 14px; background:#FFF;
@@ -81,9 +104,11 @@
   }
   .test-block button:hover { background:#C0392B; color:#fff; border-color:#C0392B; }
   .test-block p:last-child { margin-top:10px; font-weight:600; }
+
   @media (max-width:600px){
     .header h1{font-size:22px;} .nav a{font-size:12px;padding:6px 10px;}
-    .vocab-cn{font-size:18px;} .hanzi-grid,.pinyin-grid{grid-template-columns:repeat(2,1fr);}
+    .vocab-grid{grid-template-columns:1fr;}
+    .hanzi-grid,.pinyin-grid{grid-template-columns:repeat(2,1fr);}
   }
 </style>
 </head>
@@ -102,255 +127,399 @@
   <a href="#repeat-pinyin">Пиньинь</a>
 </nav>
 
-<!-- ===== СЛОВА (реальный словарь урока 1) ===== -->
+<!-- ===== СЛОВА ===== -->
 <div class="section" id="vocab">
   <div class="section-title">📖 Слова</div>
-  <table class="vocab-table">
-    <tr><th>Слово</th><th>Пиньинь</th><th>Значение</th><th>Ключи и мнемоника</th></tr>
+  <div class="vocab-grid">
 
-    <tr>
-      <td class="vocab-cn">喂</td><td class="vocab-pinyin">wèi / wéi</td><td class="vocab-ru">алло (при звонке)</td>
-      <td>
-        <div class="vocab-keys">口 (рот) + 畏 (бояться)</div>
-        <div class="vocab-mnemonic">Рот кричит «эй», чтобы привлечь внимание — алло!</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">阿姨</td><td class="vocab-pinyin">āyí</td><td class="vocab-ru">тётя, обращение к женщине</td>
-      <td>
-        <div class="vocab-keys">阿 (префикс) + 女 (женщина) + 夷</div>
-        <div class="vocab-mnemonic">Женщина постарше — как тётя</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">了</td><td class="vocab-pinyin">le</td><td class="vocab-ru">частица завершённости</td>
-      <td>
-        <div class="vocab-keys">乛 + 亅 (два крючка)</div>
-        <div class="vocab-mnemonic">Крючок «зацепил» действие — оно уже сделано</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">中学</td><td class="vocab-pinyin">zhōngxué</td><td class="vocab-ru">средняя школа</td>
-      <td>
-        <div class="vocab-keys">中 (середина) + 学 (учиться)</div>
-        <div class="vocab-mnemonic">Серединная ступень учёбы — средняя школа</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">出国</td><td class="vocab-pinyin">chūguó</td><td class="vocab-ru">уехать за границу</td>
-      <td>
-        <div class="vocab-keys">出 (выходить) + 国 (страна)</div>
-        <div class="vocab-mnemonic">Выйти из страны — за границу</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">打（电话）</td><td class="vocab-pinyin">dǎ (diànhuà)</td><td class="vocab-ru">звонить (по телефону)</td>
-      <td>
-        <div class="vocab-keys">扌 (рука) + 丁 (гвоздь)</div>
-        <div class="vocab-mnemonic">Рука бьёт по номеру — звонит</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">关机</td><td class="vocab-pinyin">guānjī</td><td class="vocab-ru">выключить телефон</td>
-      <td>
-        <div class="vocab-keys">关 (закрывать) + 机 (механизм)</div>
-        <div class="vocab-mnemonic">Закрыть механизм — выключить</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">饿</td><td class="vocab-pinyin">è</td><td class="vocab-ru">голодный</td>
-      <td>
-        <div class="vocab-keys">饣 (еда) + 我 (я)</div>
-        <div class="vocab-mnemonic">Моя еда кончилась — я голодный</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">对了</td><td class="vocab-pinyin">duìle</td><td class="vocab-ru">кстати, ах да</td>
-      <td>
-        <div class="vocab-keys">对 (верно) + 了 (готово)</div>
-        <div class="vocab-mnemonic">«Верно, вспомнил!» — кстати</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">忘</td><td class="vocab-pinyin">wàng</td><td class="vocab-ru">забыть</td>
-      <td>
-        <div class="vocab-keys">亡 (умереть/исчезать) + 心 (сердце/память)</div>
-        <div class="vocab-mnemonic">В памяти (сердце) что-то исчезло — забыл</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">开机</td><td class="vocab-pinyin">kāijī</td><td class="vocab-ru">включить телефон</td>
-      <td>
-        <div class="vocab-keys">开 (открывать) + 机 (механизм)</div>
-        <div class="vocab-mnemonic">Открыть механизм — включить</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">又</td><td class="vocab-pinyin">yòu</td><td class="vocab-ru">снова, опять (в прошлом)</td>
-      <td>
-        <div class="vocab-keys">𠂇 (рука) + 丶</div>
-        <div class="vocab-mnemonic">Повторяющееся движение — опять</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">响</td><td class="vocab-pinyin">xiǎng</td><td class="vocab-ru">звенеть, звонить (о телефоне)</td>
-      <td>
-        <div class="vocab-keys">口 (рот/звук) + 向 (направление)</div>
-        <div class="vocab-mnemonic">Звук летит в определённом направлении — звонок</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">接</td><td class="vocab-pinyin">jiē</td><td class="vocab-ru">ответить (на звонок), принять</td>
-      <td>
-        <div class="vocab-keys">扌 (рука) + 妾</div>
-        <div class="vocab-mnemonic">Рука берёт/ловит сигнал — ответить на звонок</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">踢</td><td class="vocab-pinyin">tī</td><td class="vocab-ru">пинать, играть (в футбол)</td>
-      <td>
-        <div class="vocab-keys">足 (нога) + 易</div>
-        <div class="vocab-mnemonic">Ногой легко меняешь положение мяча — пинаешь</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">比赛</td><td class="vocab-pinyin">bǐsài</td><td class="vocab-ru">соревнование, матч</td>
-      <td>
-        <div class="vocab-keys">比 (сравнивать) + 赛 (состязание)</div>
-        <div class="vocab-mnemonic">Сравнивают силы — соревнование</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">队</td><td class="vocab-pinyin">duì</td><td class="vocab-ru">команда</td>
-      <td>
-        <div class="vocab-keys">阝 (холм) + 人 (люди в ряд)</div>
-        <div class="vocab-mnemonic">Люди выстроились в ряд — команда</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">输</td><td class="vocab-pinyin">shū</td><td class="vocab-ru">проиграть</td>
-      <td>
-        <div class="vocab-keys">车 (телега) + 俞</div>
-        <div class="vocab-mnemonic">Телега увезла победу у тебя — проиграл</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">赢</td><td class="vocab-pinyin">yíng</td><td class="vocab-ru">выиграть</td>
-      <td>
-        <div class="vocab-keys">亡 + 口 + 月 + 凡 (вверху «остаток»)</div>
-        <div class="vocab-mnemonic">Сумел удержать — выиграл</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">比</td><td class="vocab-pinyin">bǐ</td><td class="vocab-ru">счёт (в игре); сравнивать</td>
-      <td>
-        <div class="vocab-keys">匕 (ложка) × 2</div>
-        <div class="vocab-mnemonic">Две ложки рядом — сравниваем, считаем очки</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">祝贺</td><td class="vocab-pinyin">zhùhè</td><td class="vocab-ru">поздравлять</td>
-      <td>
-        <div class="vocab-keys">祝 (желать) + 贺 (поздравление)</div>
-        <div class="vocab-mnemonic">Словами желают успеха — поздравляют</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">哎</td><td class="vocab-pinyin">āi</td><td class="vocab-ru">эй, ой (междометие)</td>
-      <td>
-        <div class="vocab-keys">口 (рот) + 艾 (полынь)</div>
-        <div class="vocab-mnemonic">Рот выдыхает «эй» — удивление/напоминание</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">上</td><td class="vocab-pinyin">shàng</td><td class="vocab-ru">посещать (урок/курс)</td>
-      <td>
-        <div class="vocab-keys">一 + 卜</div>
-        <div class="vocab-mnemonic">Движение вверх — пойти на занятие</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">托福</td><td class="vocab-pinyin">tuōfú</td><td class="vocab-ru">TOEFL</td>
-      <td>
-        <div class="vocab-keys">托 (поручать) + 福 (счастье)</div>
-        <div class="vocab-mnemonic">«Опираясь на счастье» — название теста</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">已经</td><td class="vocab-pinyin">yǐjīng</td><td class="vocab-ru">уже</td>
-      <td>
-        <div class="vocab-keys">已 (уже) + 经 (канал/через)</div>
-        <div class="vocab-mnemonic">Прошло через канал времени — уже</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">考</td><td class="vocab-pinyin">kǎo</td><td class="vocab-ru">сдавать (экзамен)</td>
-      <td>
-        <div class="vocab-keys">耂 (старый) + 丂 (изгиб)</div>
-        <div class="vocab-mnemonic">Старое испытание — экзамен</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="vocab-cn">陪</td><td class="vocab-pinyin">péi</td><td class="vocab-ru">сопровождать, составить компанию</td>
-      <td>
-        <div class="vocab-keys">阝 (холм) + 立 (стоять) + 口 (рот)</div>
-        <div class="vocab-mnemonic">Стою рядом с человеком — сопровождаю</div>
-      </td>
-    </tr>
-  </table>
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">喂</span>
+        <span class="vocab-pinyin">wèi / wéi</span>
+        <span class="vocab-ru">алло</span>
+      </div>
+      <div class="vocab-keys">
+        口 (рот) — <b>смысловой</b> · 畏 wèi — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Рот кричит «эй» — алло!</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">阿姨</span>
+        <span class="vocab-pinyin">āyí</span>
+        <span class="vocab-ru">тётя</span>
+      </div>
+      <div class="vocab-keys">
+        阿 — префикс · 女 (женщина) — <b>смысловой</b> · 夷 yí — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Женщина постарше — тётя</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">了</span>
+        <span class="vocab-pinyin">le</span>
+        <span class="vocab-ru">частица завершённости</span>
+      </div>
+      <div class="vocab-keys">
+        乛 + 亅 — два крючка, <b>не фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Крючок «зацепил» действие — оно сделано</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">中学</span>
+        <span class="vocab-pinyin">zhōngxué</span>
+        <span class="vocab-ru">средняя школа</span>
+      </div>
+      <div class="vocab-keys">
+        中 (середина) — <b>смысловой</b> · 学 (учиться) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Серединная ступень учёбы</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">出国</span>
+        <span class="vocab-pinyin">chūguó</span>
+        <span class="vocab-ru">уехать за границу</span>
+      </div>
+      <div class="vocab-keys">
+        出 (выходить) — <b>смысловой</b> · 国 (страна) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Выйти из страны — за границу</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">打（电话）</span>
+        <span class="vocab-pinyin">dǎ (diànhuà)</span>
+        <span class="vocab-ru">звонить</span>
+      </div>
+      <div class="vocab-keys">
+        扌 (рука) — <b>смысловой</b> · 丁 dīng — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Рука бьёт по номеру — звонит</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">关机</span>
+        <span class="vocab-pinyin">guānjī</span>
+        <span class="vocab-ru">выключить телефон</span>
+      </div>
+      <div class="vocab-keys">
+        关 (закрывать) — <b>смысловой</b> · 机 (механизм) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Закрыть механизм — выключить</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">饿</span>
+        <span class="vocab-pinyin">è</span>
+        <span class="vocab-ru">голодный</span>
+      </div>
+      <div class="vocab-keys">
+        饣 (еда) — <b>смысловой</b> · 我 wǒ — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Моя еда кончилась — я голодный</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">对了</span>
+        <span class="vocab-pinyin">duìle</span>
+        <span class="vocab-ru">кстати</span>
+      </div>
+      <div class="vocab-keys">
+        对 (верно) — <b>смысловой</b> · 了 (готово) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">«Верно, вспомнил!» — кстати</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">忘</span>
+        <span class="vocab-pinyin">wàng</span>
+        <span class="vocab-ru">забыть</span>
+      </div>
+      <div class="vocab-keys">
+        亡 (исчезать) — <b>фонетик</b> · 心 (сердце/память) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">В памяти что-то исчезло — забыл</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">开机</span>
+        <span class="vocab-pinyin">kāijī</span>
+        <span class="vocab-ru">включить телефон</span>
+      </div>
+      <div class="vocab-keys">
+        开 (открывать) — <b>смысловой</b> · 机 (механизм) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Открыть механизм — включить</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">又</span>
+        <span class="vocab-pinyin">yòu</span>
+        <span class="vocab-ru">снова (о прошлом)</span>
+      </div>
+      <div class="vocab-keys">
+        𠂇 (рука) + 丶 — <b>не фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Повторяющееся движение — опять</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">响</span>
+        <span class="vocab-pinyin">xiǎng</span>
+        <span class="vocab-ru">звенеть</span>
+      </div>
+      <div class="vocab-keys">
+        口 (звук) — <b>смысловой</b> · 向 xiàng — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Звук летит в направлении — звонок</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">接</span>
+        <span class="vocab-pinyin">jiē</span>
+        <span class="vocab-ru">отвечать (на звонок)</span>
+      </div>
+      <div class="vocab-keys">
+        扌 (рука) — <b>смысловой</b> · 妾 qiè — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Рука ловит сигнал — ответить</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">踢</span>
+        <span class="vocab-pinyin">tī</span>
+        <span class="vocab-ru">пинать</span>
+      </div>
+      <div class="vocab-keys">
+        足 (нога) — <b>смысловой</b> · 易 yì — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Ногой легко меняешь мяч — пинаешь</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">比赛</span>
+        <span class="vocab-pinyin">bǐsài</span>
+        <span class="vocab-ru">соревнование</span>
+      </div>
+      <div class="vocab-keys">
+        比 (сравнивать) — <b>смысловой</b> · 赛 (состязание) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Сравнивают силы — соревнование</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">队</span>
+        <span class="vocab-pinyin">duì</span>
+        <span class="vocab-ru">команда</span>
+      </div>
+      <div class="vocab-keys">
+        阝 (холм) — <b>смысловой</b> · 人 (люди в ряд) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Люди выстроились — команда</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">输</span>
+        <span class="vocab-pinyin">shū</span>
+        <span class="vocab-ru">проиграть</span>
+      </div>
+      <div class="vocab-keys">
+        车 (телега) — <b>смысловой</b> · 俞 yú — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Телега увезла победу — проиграл</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">赢</span>
+        <span class="vocab-pinyin">yíng</span>
+        <span class="vocab-ru">выиграть</span>
+      </div>
+      <div class="vocab-keys">
+        亡 + 口 + 月 + 凡 — <b>не фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Сумел удержать — выиграл</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">比</span>
+        <span class="vocab-pinyin">bǐ</span>
+        <span class="vocab-ru">счёт; сравнивать</span>
+      </div>
+      <div class="vocab-keys">
+        匕 (ложка) × 2 — <b>не фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Две ложки рядом — сравниваем</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">祝贺</span>
+        <span class="vocab-pinyin">zhùhè</span>
+        <span class="vocab-ru">поздравлять</span>
+      </div>
+      <div class="vocab-keys">
+        祝 (желать) — <b>смысловой</b> · 贺 (поздравление) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Словами желают успеха — поздравляют</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">哎</span>
+        <span class="vocab-pinyin">āi</span>
+        <span class="vocab-ru">эй, ой</span>
+      </div>
+      <div class="vocab-keys">
+        口 (рот) — <b>смысловой</b> · 艾 ài — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Рот выдыхает «эй» — удивление</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">上</span>
+        <span class="vocab-pinyin">shàng</span>
+        <span class="vocab-ru">посещать (урок)</span>
+      </div>
+      <div class="vocab-keys">
+        一 + 卜 — <b>не фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Движение вверх — пойти на занятие</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">托福</span>
+        <span class="vocab-pinyin">tuōfú</span>
+        <span class="vocab-ru">TOEFL</span>
+      </div>
+      <div class="vocab-keys">
+        托 (поручать) — <b>смысловой</b> · 福 (счастье) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">«Опираясь на счастье» — название теста</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">已经</span>
+        <span class="vocab-pinyin">yǐjīng</span>
+        <span class="vocab-ru">уже</span>
+      </div>
+      <div class="vocab-keys">
+        已 (уже) — <b>смысловой</b> · 经 (канал) — <b>смысловой</b>
+      </div>
+      <div class="vocab-mnemonic">Прошло через канал времени — уже</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">考</span>
+        <span class="vocab-pinyin">kǎo</span>
+        <span class="vocab-ru">сдавать экзамен</span>
+      </div>
+      <div class="vocab-keys">
+        耂 (старый) — <b>смысловой</b> · 丂 (изгиб) — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Старое испытание — экзамен</div>
+    </div>
+
+    <div class="vocab-card">
+      <div class="vocab-head">
+        <span class="vocab-cn">陪</span>
+        <span class="vocab-pinyin">péi</span>
+        <span class="vocab-ru">сопровождать</span>
+      </div>
+      <div class="vocab-keys">
+        阝 (холм) — <b>смысловой</b> · 咅 pǒu — <b>фонетик</b>
+      </div>
+      <div class="vocab-mnemonic">Стою рядом — сопровождаю</div>
+    </div>
+
+  </div>
 </div>
 <!-- ===== ГРАММАТИКА ===== -->
 <div class="section" id="grammar">
   <div class="section-title">📝 Грамматика</div>
 
-  <h3 style="margin-bottom:10px;color:#C0392B;">1. Частица 了 — завершённость действия</h3>
-  <p style="margin-bottom:10px;">Ставится после глагола или в конце предложения, показывает, что действие уже произошло.</p>
-  <div class="example-box">
-    <div class="example-cn">田芳去哪儿了？</div>
-    <div class="example-pinyin">Tián Fāng qù nǎr le?</div>
-    <div class="example-ru">Куда ушла Тянь Фан?</div>
-  </div>
-  <div class="example-box">
-    <div class="example-cn">我忘了带手机了。</div>
-    <div class="example-pinyin">Wǒ wàng le dài shǒujī le.</div>
-    <div class="example-ru">Я забыл взять телефон.</div>
-  </div>
-
-  <h3 style="margin-bottom:10px;color:#C0392B;">2. 又 (yòu) — «снова» (о прошлом)</h3>
-  <p style="margin-bottom:10px;">Показывает, что действие повторилось в прошлом. Отличие от 再 (zài) — 再 используется для будущего.</p>
-  <div class="example-box">
-    <div class="example-cn">我又忘了。</div>
-    <div class="example-pinyin">Wǒ yòu wàng le.</div>
-    <div class="example-ru">Я снова забыл.</div>
-  </div>
-  <div class="example-box">
-    <div class="example-cn">手机又响了。</div>
-    <div class="example-pinyin">Shǒujī yòu xiǎng le.</div>
-    <div class="example-ru">Телефон снова зазвонил.</div>
+  <div style="background:#FBF7EF;border:1px solid #E8E0D0;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="color:#C0392B;margin-bottom:10px;">1. Частица 了 — завершённость действия</h3>
+    <p style="margin-bottom:10px;line-height:1.6;">Ставится после глагола или в конце предложения — действие уже произошло.</p>
+    <div class="example-box">
+      <div class="example-cn">田芳去哪儿了？</div>
+      <div class="example-pinyin">Tián Fāng qù nǎr le?</div>
+      <div class="example-ru">Куда ушла Тянь Фан?</div>
+    </div>
+    <div class="example-box">
+      <div class="example-cn">我忘了带手机了。</div>
+      <div class="example-pinyin">Wǒ wàng le dài shǒujī le.</div>
+      <div class="example-ru">Я забыл взять телефон.</div>
+    </div>
   </div>
 
-  <h3 style="margin-bottom:10px;color:#C0392B;">3. 再 (zài) — «снова» (о будущем)</h3>
-  <p style="margin-bottom:10px;">Используется для будущих действий, планов.</p>
-  <div class="example-box">
-    <div class="example-cn">明天再打吧。</div>
-    <div class="example-pinyin">Míngtiān zài dǎ ba.</div>
-    <div class="example-ru">Позвони завтра ещё раз.</div>
+  <div style="background:#FBF7EF;border:1px solid #E8E0D0;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="color:#C0392B;margin-bottom:10px;">2. 又 (yòu) — «снова» (о прошлом)</h3>
+    <p style="margin-bottom:10px;line-height:1.6;">Действие повторилось в прошлом. 再 (zài) — для будущего.</p>
+    <div class="example-box">
+      <div class="example-cn">我又忘了。</div>
+      <div class="example-pinyin">Wǒ yòu wàng le.</div>
+      <div class="example-ru">Я снова забыл.</div>
+    </div>
+    <div class="example-box">
+      <div class="example-cn">手机又响了。</div>
+      <div class="example-pinyin">Shǒujī yòu xiǎng le.</div>
+      <div class="example-ru">Телефон снова зазвонил.</div>
+    </div>
   </div>
 
-  <h3 style="margin-bottom:10px;color:#C0392B;">4. 对了 (duìle) — «кстати, ах да»</h3>
-  <p style="margin-bottom:10px;">Вводное слово, когда вспоминаешь что-то важное.</p>
-  <div class="example-box">
-    <div class="example-cn">对了，我忘了告诉你了。</div>
-    <div class="example-pinyin">Duìle, wǒ wàng le gàosu nǐ le.</div>
-    <div class="example-ru">Кстати, я забыл тебе сказать.</div>
+  <div style="background:#FBF7EF;border:1px solid #E8E0D0;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="color:#C0392B;margin-bottom:10px;">3. 再 (zài) — «снова» (о будущем)</h3>
+    <p style="margin-bottom:10px;line-height:1.6;">Для будущих действий, планов.</p>
+    <div class="example-box">
+      <div class="example-cn">明天再打吧。</div>
+      <div class="example-pinyin">Míngtiān zài dǎ ba.</div>
+      <div class="example-ru">Позвони завтра ещё раз.</div>
+    </div>
   </div>
 
-  <h3 style="margin-bottom:10px;color:#C0392B;">5. 在 + место — «находиться где-то»</h3>
-  <p style="margin-bottom:10px;">Глагол «находиться» + место.</p>
-  <div class="example-box">
-    <div class="example-cn">她在医院。</div>
-    <div class="example-pinyin">Tā zài yīyuàn.</div>
-    <div class="example-ru">Она в больнице.</div>
+  <div style="background:#FBF7EF;border:1px solid #E8E0D0;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="color:#C0392B;margin-bottom:10px;">4. 对了 (duìle) — «кстати, ах да»</h3>
+    <p style="margin-bottom:10px;line-height:1.6;">Вводное слово, когда вспоминаешь что-то важное.</p>
+    <div class="example-box">
+      <div class="example-cn">对了，我忘了告诉你了。</div>
+      <div class="example-pinyin">Duìle, wǒ wàng le gàosu nǐ le.</div>
+      <div class="example-ru">Кстати, я забыл тебе сказать.</div>
+    </div>
+  </div>
+
+  <div style="background:#FBF7EF;border:1px solid #E8E0D0;border-radius:12px;padding:20px;">
+    <h3 style="color:#C0392B;margin-bottom:10px;">5. 在 + место — «находиться где-то»</h3>
+    <p style="margin-bottom:10px;line-height:1.6;">Глагол «находиться» + место.</p>
+    <div class="example-box">
+      <div class="example-cn">她在医院。</div>
+      <div class="example-pinyin">Tā zài yīyuàn.</div>
+      <div class="example-ru">Она в больнице.</div>
+    </div>
   </div>
 </div>
 
