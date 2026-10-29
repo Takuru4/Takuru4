@@ -3,265 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Урок 1 · 我比你更喜欢音乐</title>
+<title>Урок 1 · 田芳去哪儿了</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'Inter', -apple-system, sans-serif;
-    background: #FBF7EF;
-    color: #2D2A26;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px 15px;
+    background: #FBF7EF; color: #2D2A26;
+    max-width: 960px; margin: 0 auto; padding: 20px 15px;
   }
-
   .header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 30px 15px;
-    background: linear-gradient(135deg, #FFF9F0 0%, #F5EDE3 100%);
-    border-radius: 16px;
-    border: 1px solid #E8E0D0;
+    text-align: center; margin-bottom: 30px; padding: 30px 15px;
+    background: linear-gradient(135deg,#FFF9F0,#F5EDE3);
+    border-radius: 16px; border: 1px solid #E8E0D0;
   }
-
-  .header h1 {
-    font-size: 26px;
-    font-weight: 700;
-    color: #C0392B;
-    font-family: 'Georgia', serif;
-  }
-
-  .header p {
-    margin-top: 8px;
-    color: #6B6B6B;
-    font-size: 14px;
-  }
-
+  .header h1 { font-size: 26px; font-weight: 700; color: #C0392B; font-family: 'Georgia',serif; }
+  .header p { margin-top: 8px; color: #6B6B6B; font-size: 14px; }
   .nav {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 25px;
-    padding: 12px;
-    background: #FFFFFF;
-    border-radius: 12px;
-    border: 1px solid #E8E0D0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    display:flex; justify-content:center; gap:8px; flex-wrap:wrap;
+    margin-bottom:25px; padding:12px; background:#FFF;
+    border-radius:12px; border:1px solid #E8E0D0; position:sticky; top:0; z-index:100;
   }
-
   .nav a {
-    display: inline-block;
-    padding: 8px 14px;
-    background: #F5F0E8;
-    border-radius: 20px;
-    text-decoration: none;
-    color: #2D2A26;
-    font-size: 13px;
-    font-weight: 600;
-    transition: all 0.2s;
+    padding:8px 14px; background:#F5F0E8; border-radius:20px;
+    text-decoration:none; color:#2D2A26; font-size:13px; font-weight:600;
   }
-
-  .nav a:hover {
-    background: #C0392B;
-    color: white;
-  }
-
+  .nav a:hover { background:#C0392B; color:#fff; }
   .section {
-    margin-bottom: 40px;
-    background: #FFFFFF;
-    border-radius: 16px;
-    border: 1px solid #E8E0D0;
-    padding: 25px;
+    margin-bottom:40px; background:#FFF; border-radius:16px;
+    border:1px solid #E8E0D0; padding:25px;
   }
-
   .section-title {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
-    border-bottom: 3px solid #C0392B;
-    display: inline-block;
+    font-size:20px; font-weight:700; margin-bottom:20px; padding-bottom:8px;
+    border-bottom:3px solid #C0392B; display:inline-block;
   }
-
-  .vocab-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
+  .vocab-table { width:100%; border-collapse:collapse; }
   .vocab-table th {
-    background: #F5F0E8;
-    padding: 10px;
-    text-align: left;
-    font-size: 13px;
-    color: #6B6B6B;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    background:#F5F0E8; padding:10px; text-align:left;
+    font-size:13px; color:#6B6B6B; text-transform:uppercase; letter-spacing:1px;
   }
-
   .vocab-table td {
-    padding: 12px 10px;
-    border-bottom: 1px solid #F0E8D8;
-    font-size: 16px;
+    padding:12px 10px; border-bottom:1px solid #F0E8D8;
+    font-size:15px; vertical-align:top;
   }
-
-  .vocab-table tr:last-child td {
-    border-bottom: none;
-  }
-
-  .vocab-cn {
-    font-size: 22px;
-    font-weight: 700;
-    color: #C0392B;
-    font-family: 'Georgia', serif;
-  }
-
-  .vocab-pinyin {
-    color: #6B6B6B;
-    font-size: 14px;
-  }
-
-  .vocab-ru {
-    font-size: 15px;
-  }
-
+  .vocab-table tr:last-child td { border-bottom:none; }
+  .vocab-cn { font-size:20px; font-weight:700; color:#C0392B; font-family:'Georgia',serif; white-space:nowrap; }
+  .vocab-pinyin { color:#6B6B6B; font-size:13px; }
+  .vocab-ru { font-size:14px; }
+  .vocab-keys { font-size:12px; color:#8B7355; margin-top:4px; font-style:italic; line-height:1.5; }
+  .vocab-mnemonic { font-size:12px; color:#6B6B6B; margin-top:2px; line-height:1.5; }
   .back-link {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 8px 16px;
-    background: #FFFFFF;
-    border: 1px solid #E8E0D0;
-    border-radius: 20px;
-    text-decoration: none;
-    color: #2D2A26;
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 0.2s;
+    display:inline-block; margin-top:20px; padding:8px 16px; background:#FFF;
+    border:1px solid #E8E0D0; border-radius:20px; text-decoration:none;
+    color:#2D2A26; font-size:14px; font-weight:600;
   }
-
-  .back-link:hover {
-    border-color: #C0392B;
-    color: #C0392B;
+  .back-link:hover { border-color:#C0392B; color:#C0392B; }
+  .example-box { background:#F5F0E8; padding:12px; border-radius:8px; margin-bottom:15px; }
+  .example-cn { font-size:18px; font-weight:700; color:#C0392B; font-family:'Georgia',serif; }
+  .example-pinyin { color:#6B6B6B; font-size:13px; margin-top:4px; }
+  .example-ru { font-size:14px; margin-top:4px; }
+  .hanzi-grid,.pinyin-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; }
+  .hanzi-card,.pinyin-card {
+    background:#FFF; border:1px solid #E8E0D0; border-radius:12px; padding:20px;
+    text-align:center; cursor:pointer; transition:.2s; min-height:80px;
+    display:flex; align-items:center; justify-content:center;
   }
-
-  .example-box {
-    background: #F5F0E8;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 15px;
+  .hanzi-card:hover,.pinyin-card:hover { border-color:#C0392B; transform:translateY(-2px); }
+  .hanzi-front,.hanzi-back,.pinyin-front,.pinyin-back {
+    font-size:20px; font-weight:700; color:#C0392B; font-family:'Georgia',serif;
   }
-
-  .example-cn {
-    font-size: 18px;
-    font-weight: 700;
-    color: #C0392B;
-    font-family: 'Georgia', serif;
-  }
-
-  .example-pinyin {
-    color: #6B6B6B;
-    font-size: 13px;
-    margin-top: 4px;
-  }
-
-  .example-ru {
-    font-size: 14px;
-    margin-top: 4px;
-  }
-
-  .hanzi-grid, .pinyin-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px;
-  }
-
-  .hanzi-card, .pinyin-card {
-    background: #FFFFFF;
-    border: 1px solid #E8E0D0;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-
-  .hanzi-card:hover, .pinyin-card:hover {
-    border-color: #C0392B;
-    transform: translateY(-2px);
-  }
-
-  .hanzi-front, .hanzi-back, .pinyin-front, .pinyin-back {
-    font-size: 20px;
-    font-weight: 700;
-    color: #C0392B;
-    font-family: 'Georgia', serif;
-  }
-
-  .hanzi-back, .pinyin-back {
-    display: none;
-    color: #2D2A26;
-    font-size: 16px;
-  }
-
-  .hanzi-card.flipped .hanzi-front, .pinyin-card.flipped .pinyin-front {
-    display: none;
-  }
-
-  .hanzi-card.flipped .hanzi-back, .pinyin-card.flipped .pinyin-back {
-    display: block;
-  }
-
-  .test-block {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #F5F0E8;
-    border-radius: 12px;
-  }
-
+  .hanzi-back,.pinyin-back { display:none; color:#2D2A26; font-size:16px; }
+  .hanzi-card.flipped .hanzi-front,.pinyin-card.flipped .pinyin-front { display:none; }
+  .hanzi-card.flipped .hanzi-back,.pinyin-card.flipped .pinyin-back { display:block; }
+  .test-block { margin-bottom:20px; padding:15px; background:#F5F0E8; border-radius:12px; }
   .test-block button {
-    display: inline-block;
-    margin: 5px 5px 0 0;
-    padding: 8px 14px;
-    background: #FFFFFF;
-    border: 1px solid #E8E0D0;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s;
+    display:inline-block; margin:5px 5px 0 0; padding:8px 14px; background:#FFF;
+    border:1px solid #E8E0D0; border-radius:20px; cursor:pointer; font-size:14px;
   }
-
-  .test-block button:hover {
-    background: #C0392B;
-    color: white;
-    border-color: #C0392B;
-  }
-
-  .test-block p:last-child {
-    margin-top: 10px;
-    font-weight: 600;
-  }
-
-  @media (max-width: 600px) {
-    .header h1 { font-size: 22px; }
-    .nav a { font-size: 12px; padding: 6px 10px; }
-    .vocab-cn { font-size: 18px; }
-    .hanzi-grid, .pinyin-grid { grid-template-columns: repeat(2, 1fr); }
+  .test-block button:hover { background:#C0392B; color:#fff; border-color:#C0392B; }
+  .test-block p:last-child { margin-top:10px; font-weight:600; }
+  @media (max-width:600px){
+    .header h1{font-size:22px;} .nav a{font-size:12px;padding:6px 10px;}
+    .vocab-cn{font-size:18px;} .hanzi-grid,.pinyin-grid{grid-template-columns:repeat(2,1fr);}
   }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>第一课 · 我比你更喜欢音乐</h1>
-  <p>Урок 1 · Я люблю музыку больше, чем ты</p>
+  <h1>第一课 · 田芳去哪儿了</h1>
+  <p>Урок 1 · Куда пропала Тянь Фан</p>
 </div>
 
 <nav class="nav">
@@ -272,90 +102,255 @@
   <a href="#repeat-pinyin">Пиньинь</a>
 </nav>
 
-<!-- ===== СЛОВА ===== -->
+<!-- ===== СЛОВА (реальный словарь урока 1) ===== -->
 <div class="section" id="vocab">
   <div class="section-title">📖 Слова</div>
   <table class="vocab-table">
-    <tr><th>Китайский</th><th>Пиньинь</th><th>Перевод</th></tr>
-    <tr><td class="vocab-cn">变化</td><td class="vocab-pinyin">biànhuà</td><td class="vocab-ru">меняться / изменение</td></tr>
-    <tr><td class="vocab-cn">暑假</td><td class="vocab-pinyin">shǔjià</td><td class="vocab-ru">летние каникулы</td></tr>
-    <tr><td class="vocab-cn">还</td><td class="vocab-pinyin">hái</td><td class="vocab-ru">ещё, тоже, всё ещё</td></tr>
-    <tr><td class="vocab-cn">比</td><td class="vocab-pinyin">bǐ</td><td class="vocab-ru">чем (сравнение)</td></tr>
-    <tr><td class="vocab-cn">人口</td><td class="vocab-pinyin">rénkǒu</td><td class="vocab-ru">население</td></tr>
-    <tr><td class="vocab-cn">最</td><td class="vocab-pinyin">zuì</td><td class="vocab-ru">самый</td></tr>
-    <tr><td class="vocab-cn">城市</td><td class="vocab-pinyin">chéngshì</td><td class="vocab-ru">город</td></tr>
-    <tr><td class="vocab-cn">增加</td><td class="vocab-pinyin">zēngjiā</td><td class="vocab-ru">увеличиваться</td></tr>
-    <tr><td class="vocab-cn">建筑</td><td class="vocab-pinyin">jiànzhù</td><td class="vocab-ru">строить / здание, архитектура</td></tr>
-    <tr><td class="vocab-cn">过去</td><td class="vocab-pinyin">guòqù</td><td class="vocab-ru">прошлое</td></tr>
-    <tr><td class="vocab-cn">变</td><td class="vocab-pinyin">biàn</td><td class="vocab-ru">становиться, меняться</td></tr>
-    <tr><td class="vocab-cn">更</td><td class="vocab-pinyin">gèng</td><td class="vocab-ru">ещё более</td></tr>
-    <tr><td class="vocab-cn">漂亮</td><td class="vocab-pinyin">piàoliang</td><td class="vocab-ru">красивый</td></tr>
-    <tr><td class="vocab-cn">暖和</td><td class="vocab-pinyin">nuǎnhuo</td><td class="vocab-ru">тёплый</td></tr>
-    <tr><td class="vocab-cn">气温</td><td class="vocab-pinyin">qìwēn</td><td class="vocab-ru">температура воздуха</td></tr>
-    <tr><td class="vocab-cn">预报</td><td class="vocab-pinyin">yùbào</td><td class="vocab-ru">прогноз</td></tr>
-    <tr><td class="vocab-cn">高</td><td class="vocab-pinyin">gāo</td><td class="vocab-ru">высокий</td></tr>
-    <tr><td class="vocab-cn">低</td><td class="vocab-pinyin">dī</td><td class="vocab-ru">низкий</td></tr>
-    <tr><td class="vocab-cn">屋子</td><td class="vocab-pinyin">wūzi</td><td class="vocab-ru">комната</td></tr>
-    <tr><td class="vocab-cn">暖气</td><td class="vocab-pinyin">nuǎnqì</td><td class="vocab-ru">отопление</td></tr>
-    <tr><td class="vocab-cn">感觉</td><td class="vocab-pinyin">gǎnjué</td><td class="vocab-ru">чувствовать / ощущение</td></tr>
-    <tr><td class="vocab-cn">音乐</td><td class="vocab-pinyin">yīnyuè</td><td class="vocab-ru">музыка</td></tr>
-    <tr><td class="vocab-cn">迷</td><td class="vocab-pinyin">mí</td><td class="vocab-ru">фанат</td></tr>
-    <tr><td class="vocab-cn">古典</td><td class="vocab-pinyin">gǔdiǎn</td><td class="vocab-ru">классический</td></tr>
-    <tr><td class="vocab-cn">现代</td><td class="vocab-pinyin">xiàndài</td><td class="vocab-ru">современный</td></tr>
-    <tr><td class="vocab-cn">名曲</td><td class="vocab-pinyin">míngqǔ</td><td class="vocab-ru">знаменитая мелодия</td></tr>
-    <tr><td class="vocab-cn">民歌</td><td class="vocab-pinyin">míngē</td><td class="vocab-ru">народная песня</td></tr>
-    <tr><td class="vocab-cn">流行</td><td class="vocab-pinyin">liúxíng</td><td class="vocab-ru">популярный</td></tr>
-    <tr><td class="vocab-cn">歌曲</td><td class="vocab-pinyin">gēqǔ</td><td class="vocab-ru">песня</td></tr>
-    <tr><td class="vocab-cn">歌词</td><td class="vocab-pinyin">gēcí</td><td class="vocab-ru">текст песни</td></tr>
-    <tr><td class="vocab-cn">年轻</td><td class="vocab-pinyin">niánqīng</td><td class="vocab-ru">молодой</td></tr>
-    <tr><td class="vocab-cn">遥远</td><td class="vocab-pinyin">yáoyuǎn</td><td class="vocab-ru">далёкий</td></tr>
-    <tr><td class="vocab-cn">也许</td><td class="vocab-pinyin">yěxǔ</td><td class="vocab-ru">возможно</td></tr>
-    <tr><td class="vocab-cn">下载</td><td class="vocab-pinyin">xiàzài</td><td class="vocab-ru">скачивать</td></tr>
-    <tr><td class="vocab-cn">首</td><td class="vocab-pinyin">shǒu</td><td class="vocab-ru">счётное слово (для песен)</td></tr>
+    <tr><th>Слово</th><th>Пиньинь</th><th>Значение</th><th>Ключи и мнемоника</th></tr>
+
+    <tr>
+      <td class="vocab-cn">喂</td><td class="vocab-pinyin">wèi / wéi</td><td class="vocab-ru">алло (при звонке)</td>
+      <td>
+        <div class="vocab-keys">口 (рот) + 畏 (бояться)</div>
+        <div class="vocab-mnemonic">Рот кричит «эй», чтобы привлечь внимание — алло!</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">阿姨</td><td class="vocab-pinyin">āyí</td><td class="vocab-ru">тётя, обращение к женщине</td>
+      <td>
+        <div class="vocab-keys">阿 (префикс) + 女 (женщина) + 夷</div>
+        <div class="vocab-mnemonic">Женщина постарше — как тётя</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">了</td><td class="vocab-pinyin">le</td><td class="vocab-ru">частица завершённости</td>
+      <td>
+        <div class="vocab-keys">乛 + 亅 (два крючка)</div>
+        <div class="vocab-mnemonic">Крючок «зацепил» действие — оно уже сделано</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">中学</td><td class="vocab-pinyin">zhōngxué</td><td class="vocab-ru">средняя школа</td>
+      <td>
+        <div class="vocab-keys">中 (середина) + 学 (учиться)</div>
+        <div class="vocab-mnemonic">Серединная ступень учёбы — средняя школа</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">出国</td><td class="vocab-pinyin">chūguó</td><td class="vocab-ru">уехать за границу</td>
+      <td>
+        <div class="vocab-keys">出 (выходить) + 国 (страна)</div>
+        <div class="vocab-mnemonic">Выйти из страны — за границу</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">打（电话）</td><td class="vocab-pinyin">dǎ (diànhuà)</td><td class="vocab-ru">звонить (по телефону)</td>
+      <td>
+        <div class="vocab-keys">扌 (рука) + 丁 (гвоздь)</div>
+        <div class="vocab-mnemonic">Рука бьёт по номеру — звонит</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">关机</td><td class="vocab-pinyin">guānjī</td><td class="vocab-ru">выключить телефон</td>
+      <td>
+        <div class="vocab-keys">关 (закрывать) + 机 (механизм)</div>
+        <div class="vocab-mnemonic">Закрыть механизм — выключить</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">饿</td><td class="vocab-pinyin">è</td><td class="vocab-ru">голодный</td>
+      <td>
+        <div class="vocab-keys">饣 (еда) + 我 (я)</div>
+        <div class="vocab-mnemonic">Моя еда кончилась — я голодный</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">对了</td><td class="vocab-pinyin">duìle</td><td class="vocab-ru">кстати, ах да</td>
+      <td>
+        <div class="vocab-keys">对 (верно) + 了 (готово)</div>
+        <div class="vocab-mnemonic">«Верно, вспомнил!» — кстати</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">忘</td><td class="vocab-pinyin">wàng</td><td class="vocab-ru">забыть</td>
+      <td>
+        <div class="vocab-keys">亡 (умереть/исчезать) + 心 (сердце/память)</div>
+        <div class="vocab-mnemonic">В памяти (сердце) что-то исчезло — забыл</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">开机</td><td class="vocab-pinyin">kāijī</td><td class="vocab-ru">включить телефон</td>
+      <td>
+        <div class="vocab-keys">开 (открывать) + 机 (механизм)</div>
+        <div class="vocab-mnemonic">Открыть механизм — включить</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">又</td><td class="vocab-pinyin">yòu</td><td class="vocab-ru">снова, опять (в прошлом)</td>
+      <td>
+        <div class="vocab-keys">𠂇 (рука) + 丶</div>
+        <div class="vocab-mnemonic">Повторяющееся движение — опять</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">响</td><td class="vocab-pinyin">xiǎng</td><td class="vocab-ru">звенеть, звонить (о телефоне)</td>
+      <td>
+        <div class="vocab-keys">口 (рот/звук) + 向 (направление)</div>
+        <div class="vocab-mnemonic">Звук летит в определённом направлении — звонок</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">接</td><td class="vocab-pinyin">jiē</td><td class="vocab-ru">ответить (на звонок), принять</td>
+      <td>
+        <div class="vocab-keys">扌 (рука) + 妾</div>
+        <div class="vocab-mnemonic">Рука берёт/ловит сигнал — ответить на звонок</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">踢</td><td class="vocab-pinyin">tī</td><td class="vocab-ru">пинать, играть (в футбол)</td>
+      <td>
+        <div class="vocab-keys">足 (нога) + 易</div>
+        <div class="vocab-mnemonic">Ногой легко меняешь положение мяча — пинаешь</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">比赛</td><td class="vocab-pinyin">bǐsài</td><td class="vocab-ru">соревнование, матч</td>
+      <td>
+        <div class="vocab-keys">比 (сравнивать) + 赛 (состязание)</div>
+        <div class="vocab-mnemonic">Сравнивают силы — соревнование</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">队</td><td class="vocab-pinyin">duì</td><td class="vocab-ru">команда</td>
+      <td>
+        <div class="vocab-keys">阝 (холм) + 人 (люди в ряд)</div>
+        <div class="vocab-mnemonic">Люди выстроились в ряд — команда</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">输</td><td class="vocab-pinyin">shū</td><td class="vocab-ru">проиграть</td>
+      <td>
+        <div class="vocab-keys">车 (телега) + 俞</div>
+        <div class="vocab-mnemonic">Телега увезла победу у тебя — проиграл</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">赢</td><td class="vocab-pinyin">yíng</td><td class="vocab-ru">выиграть</td>
+      <td>
+        <div class="vocab-keys">亡 + 口 + 月 + 凡 (вверху «остаток»)</div>
+        <div class="vocab-mnemonic">Сумел удержать — выиграл</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">比</td><td class="vocab-pinyin">bǐ</td><td class="vocab-ru">счёт (в игре); сравнивать</td>
+      <td>
+        <div class="vocab-keys">匕 (ложка) × 2</div>
+        <div class="vocab-mnemonic">Две ложки рядом — сравниваем, считаем очки</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">祝贺</td><td class="vocab-pinyin">zhùhè</td><td class="vocab-ru">поздравлять</td>
+      <td>
+        <div class="vocab-keys">祝 (желать) + 贺 (поздравление)</div>
+        <div class="vocab-mnemonic">Словами желают успеха — поздравляют</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">哎</td><td class="vocab-pinyin">āi</td><td class="vocab-ru">эй, ой (междометие)</td>
+      <td>
+        <div class="vocab-keys">口 (рот) + 艾 (полынь)</div>
+        <div class="vocab-mnemonic">Рот выдыхает «эй» — удивление/напоминание</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">上</td><td class="vocab-pinyin">shàng</td><td class="vocab-ru">посещать (урок/курс)</td>
+      <td>
+        <div class="vocab-keys">一 + 卜</div>
+        <div class="vocab-mnemonic">Движение вверх — пойти на занятие</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">托福</td><td class="vocab-pinyin">tuōfú</td><td class="vocab-ru">TOEFL</td>
+      <td>
+        <div class="vocab-keys">托 (поручать) + 福 (счастье)</div>
+        <div class="vocab-mnemonic">«Опираясь на счастье» — название теста</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">已经</td><td class="vocab-pinyin">yǐjīng</td><td class="vocab-ru">уже</td>
+      <td>
+        <div class="vocab-keys">已 (уже) + 经 (канал/через)</div>
+        <div class="vocab-mnemonic">Прошло через канал времени — уже</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">考</td><td class="vocab-pinyin">kǎo</td><td class="vocab-ru">сдавать (экзамен)</td>
+      <td>
+        <div class="vocab-keys">耂 (старый) + 丂 (изгиб)</div>
+        <div class="vocab-mnemonic">Старое испытание — экзамен</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="vocab-cn">陪</td><td class="vocab-pinyin">péi</td><td class="vocab-ru">сопровождать, составить компанию</td>
+      <td>
+        <div class="vocab-keys">阝 (холм) + 立 (стоять) + 口 (рот)</div>
+        <div class="vocab-mnemonic">Стою рядом с человеком — сопровождаю</div>
+      </td>
+    </tr>
   </table>
 </div>
 <!-- ===== ГРАММАТИКА ===== -->
 <div class="section" id="grammar">
   <div class="section-title">📝 Грамматика</div>
 
-  <h3 style="margin-bottom:10px;color:#C0392B;">1. Конструкция A 比 B + прилагательное</h3>
-  <p style="margin-bottom:10px;">Сравнение: A более [качество], чем B.</p>
+  <h3 style="margin-bottom:10px;color:#C0392B;">1. Частица 了 — завершённость действия</h3>
+  <p style="margin-bottom:10px;">Ставится после глагола или в конце предложения, показывает, что действие уже произошло.</p>
   <div class="example-box">
-    <div class="example-cn">上海没有北京大，不过人口比北京多。</div>
-    <div class="example-pinyin">Shànghǎi méiyǒu Běijīng dà, búguò rénkǒu bǐ Běijīng duō.</div>
-    <div class="example-ru">Шанхай не больше Пекина, но население больше, чем в Пекине.</div>
+    <div class="example-cn">田芳去哪儿了？</div>
+    <div class="example-pinyin">Tián Fāng qù nǎr le?</div>
+    <div class="example-ru">Куда ушла Тянь Фан?</div>
+  </div>
+  <div class="example-box">
+    <div class="example-cn">我忘了带手机了。</div>
+    <div class="example-pinyin">Wǒ wàng le dài shǒujī le.</div>
+    <div class="example-ru">Я забыл взять телефон.</div>
   </div>
 
-  <h3 style="margin-bottom:10px;color:#C0392B;">2. 更 (gèng) — «ещё более»</h3>
-  <p style="margin-bottom:10px;">Усиливает сравнение: A 比 B 更 + прилагательное.</p>
+  <h3 style="margin-bottom:10px;color:#C0392B;">2. 又 (yòu) — «снова» (о прошлом)</h3>
+  <p style="margin-bottom:10px;">Показывает, что действие повторилось в прошлом. Отличие от 再 (zài) — 再 используется для будущего.</p>
   <div class="example-box">
-    <div class="example-cn">上海比过去变得更漂亮了。</div>
-    <div class="example-pinyin">Shànghǎi bǐ guòqù biàn de gèng piàoliang le.</div>
-    <div class="example-ru">Шанхай стал ещё красивее, чем раньше.</div>
+    <div class="example-cn">我又忘了。</div>
+    <div class="example-pinyin">Wǒ yòu wàng le.</div>
+    <div class="example-ru">Я снова забыл.</div>
+  </div>
+  <div class="example-box">
+    <div class="example-cn">手机又响了。</div>
+    <div class="example-pinyin">Shǒujī yòu xiǎng le.</div>
+    <div class="example-ru">Телефон снова зазвонил.</div>
   </div>
 
-  <h3 style="margin-bottom:10px;color:#C0392B;">3. 得 + сравнение</h3>
-  <p style="margin-bottom:10px;">Описывает, как выполняется действие.</p>
+  <h3 style="margin-bottom:10px;color:#C0392B;">3. 再 (zài) — «снова» (о будущем)</h3>
+  <p style="margin-bottom:10px;">Используется для будущих действий, планов.</p>
   <div class="example-box">
-    <div class="example-cn">流行歌曲的歌词没有民歌写得好。</div>
-    <div class="example-pinyin">Liúxíng gēqǔ de gēcí méiyǒu míngē xiě de hǎo.</div>
-    <div class="example-ru">Тексты популярных песен написаны не так хорошо, как народные.</div>
+    <div class="example-cn">明天再打吧。</div>
+    <div class="example-pinyin">Míngtiān zài dǎ ba.</div>
+    <div class="example-ru">Позвони завтра ещё раз.</div>
   </div>
 
-  <h3 style="margin-bottom:10px;color:#C0392B;">4. 也许 (yěxǔ) — «возможно»</h3>
-  <p style="margin-bottom:10px;">Выражает предположение.</p>
+  <h3 style="margin-bottom:10px;color:#C0392B;">4. 对了 (duìle) — «кстати, ах да»</h3>
+  <p style="margin-bottom:10px;">Вводное слово, когда вспоминаешь что-то важное.</p>
   <div class="example-box">
-    <div class="example-cn">我也许比你更喜欢音乐。</div>
-    <div class="example-pinyin">Wǒ yěxǔ bǐ nǐ gèng xǐhuan yīnyuè.</div>
-    <div class="example-ru">Возможно, я люблю музыку больше, чем ты.</div>
+    <div class="example-cn">对了，我忘了告诉你了。</div>
+    <div class="example-pinyin">Duìle, wǒ wàng le gàosu nǐ le.</div>
+    <div class="example-ru">Кстати, я забыл тебе сказать.</div>
   </div>
 
-  <h3 style="margin-bottom:10px;color:#C0392B;">5. 没有 (méiyǒu) — «не такой, как»</h3>
-  <p style="margin-bottom:10px;">Отрицательное сравнение: A 没有 B + прилагательное.</p>
+  <h3 style="margin-bottom:10px;color:#C0392B;">5. 在 + место — «находиться где-то»</h3>
+  <p style="margin-bottom:10px;">Глагол «находиться» + место.</p>
   <div class="example-box">
-    <div class="example-cn">屋子里没有暖气，所以感觉还没有北京暖和。</div>
-    <div class="example-pinyin">Wūzi lǐ méiyǒu nuǎnqì, suǒyǐ gǎnjué hái méiyǒu Běijīng nuǎnhuo.</div>
-    <div class="example-ru">В комнате нет отопления, поэтому кажется, что не так тепло, как в Пекине.</div>
+    <div class="example-cn">她在医院。</div>
+    <div class="example-pinyin">Tā zài yīyuàn.</div>
+    <div class="example-ru">Она в больнице.</div>
   </div>
 </div>
 
@@ -365,416 +360,519 @@
 
   <div class="test-block" id="test1">
     <p><strong>Тест 1.</strong> Выбери правильный вариант:</p>
-    <p>上海 ___ 北京大。</p>
-    <button onclick="checkTest('test1', 0)">A. 比</button>
-    <button onclick="checkTest('test1', 1)">B. 更</button>
-    <button onclick="checkTest('test1', 2)">C. 得</button>
+    <p>田芳去哪儿 ___ ？</p>
+    <button onclick="checkTest('test1', 0)">A. 了</button>
+    <button onclick="checkTest('test1', 1)">B. 再</button>
+    <button onclick="checkTest('test1', 2)">C. 又</button>
     <p id="test1-result"></p>
   </div>
 
   <div class="test-block" id="test2">
-    <p><strong>Тест 2.</strong> Выбери правильный перевод:</p>
-    <p>我也许比你更喜欢音乐。</p>
-    <button onclick="checkTest('test2', 0)">A. Возможно, я люблю музыку больше, чем ты.</button>
-    <button onclick="checkTest('test2', 1)">B. Я люблю музыку меньше, чем ты.</button>
-    <button onclick="checkTest('test2', 2)">C. Я не люблю музыку.</button>
+    <p><strong>Тест 2.</strong> Выбери правильный вариант:</p>
+    <p>我 ___ 忘了带手机。</p>
+    <button onclick="checkTest('test2', 0)">A. 再</button>
+    <button onclick="checkTest('test2', 1)">B. 又</button>
+    <button onclick="checkTest('test2', 2)">C. 了</button>
     <p id="test2-result"></p>
   </div>
 
   <div class="test-block" id="test3">
     <p><strong>Тест 3.</strong> Выбери правильный вариант:</p>
-    <p>流行歌曲的歌词没有民歌写 ___ 好。</p>
-    <button onclick="checkTest('test3', 0)">A. 比</button>
-    <button onclick="checkTest('test3', 1)">B. 更</button>
-    <button onclick="checkTest('test3', 2)">C. 得</button>
+    <p>明天 ___ 打吧。</p>
+    <button onclick="checkTest('test3', 0)">A. 又</button>
+    <button onclick="checkTest('test3', 1)">B. 再</button>
+    <button onclick="checkTest('test3', 2)">C. 了</button>
     <p id="test3-result"></p>
   </div>
 
   <div class="test-block" id="test4">
-    <p><strong>Тест 4.</strong> Выбери правильный вариант:</p>
-    <p>上海比过去变得更 ___ 了。</p>
-    <button onclick="checkTest('test4', 0)">A. 漂亮</button>
-    <button onclick="checkTest('test4', 1)">B. 暖和</button>
-    <button onclick="checkTest('test4', 2)">C. 高</button>
+    <p><strong>Тест 4.</strong> Выбери правильный перевод:</p>
+    <p>手机又响了。</p>
+    <button onclick="checkTest('test4', 0)">A. Телефон снова зазвонил.</button>
+    <button onclick="checkTest('test4', 1)">B. Телефон будет звонить.</button>
+    <button onclick="checkTest('test4', 2)">C. Телефон не звонит.</button>
     <p id="test4-result"></p>
   </div>
 
   <div class="test-block" id="test5">
     <p><strong>Тест 5.</strong> Выбери правильный вариант:</p>
-    <p>屋子里没有暖气，所以感觉还没有北京 ___ 。</p>
-    <button onclick="checkTest('test5', 0)">A. 暖和</button>
-    <button onclick="checkTest('test5', 1)">B. 漂亮</button>
-    <button onclick="checkTest('test5', 2)">C. 高</button>
+    <p>___ ，我忘了告诉你了。</p>
+    <button onclick="checkTest('test5', 0)">A. 对了</button>
+    <button onclick="checkTest('test5', 1)">B. 又了</button>
+    <button onclick="checkTest('test5', 2)">C. 再了</button>
     <p id="test5-result"></p>
   </div>
 
   <div class="test-block" id="test6">
     <p><strong>Тест 6.</strong> Выбери правильный вариант:</p>
-    <p>我是个音乐 ___ ，光交响乐就下载了好几百首。</p>
-    <button onclick="checkTest('test6', 0)">A. 迷</button>
-    <button onclick="checkTest('test6', 1)">B. 歌</button>
-    <button onclick="checkTest('test6', 2)">C. 曲</button>
+    <p>她 ___ 医院。</p>
+    <button onclick="checkTest('test6', 0)">A. 在</button>
+    <button onclick="checkTest('test6', 1)">B. 去</button>
+    <button onclick="checkTest('test6', 2)">C. 来</button>
     <p id="test6-result"></p>
   </div>
 
   <div class="test-block" id="test7">
     <p><strong>Тест 7.</strong> Выбери правильный вариант:</p>
-    <p>你喜欢古典音乐 ___ 现代音乐？</p>
-    <button onclick="checkTest('test7', 0)">A. 比</button>
-    <button onclick="checkTest('test7', 1)">B. 还是</button>
-    <button onclick="checkTest('test7', 2)">C. 更</button>
+    <p>我们的队 ___ 了。</p>
+    <button onclick="checkTest('test7', 0)">A. 赢</button>
+    <button onclick="checkTest('test7', 1)">B. 输</button>
+    <button onclick="checkTest('test7', 2)">C. 打</button>
     <p id="test7-result"></p>
   </div>
 
   <div class="test-block" id="test8">
     <p><strong>Тест 8.</strong> Выбери правильный вариант:</p>
-    <p>“在那遥远的地方”，写得多 ___ ！</p>
-    <button onclick="checkTest('test8', 0)">A. 好</button>
-    <button onclick="checkTest('test8', 1)">B. 高</button>
-    <button onclick="checkTest('test8', 2)">C. 低</button>
+    <p>我 ___ 了，还没吃饭。</p>
+    <button onclick="checkTest('test8', 0)">A. 饿</button>
+    <button onclick="checkTest('test8', 1)">B. 忙</button>
+    <button onclick="checkTest('test8', 2)">C. 累</button>
     <p id="test8-result"></p>
   </div>
 
   <div class="test-block" id="test9">
     <p><strong>Тест 9.</strong> Выбери правильный вариант:</p>
-    <p>上海的气温比北京高得 ___ 。</p>
-    <button onclick="checkTest('test9', 0)">A. 多</button>
-    <button onclick="checkTest('test9', 1)">B. 少</button>
-    <button onclick="checkTest('test9', 2)">C. 更</button>
+    <p>我忘 ___ 带手机了。</p>
+    <button onclick="checkTest('test9', 0)">A. 了</button>
+    <button onclick="checkTest('test9', 1)">B. 再</button>
+    <button onclick="checkTest('test9', 2)">C. 又</button>
     <p id="test9-result"></p>
   </div>
 
   <div class="test-block" id="test10">
-    <p><strong>Тест 10.</strong> Выбери правильный вариант:</p>
-    <p>我比你大两 ___ 。</p>
-    <button onclick="checkTest('test10', 0)">A. 岁</button>
-    <button onclick="checkTest('test10', 1)">B. 年</button>
-    <button onclick="checkTest('test10', 2)">C. 月</button>
+    <p><strong>Тест 10.</strong> Выбери правильный перевод:</p>
+    <p>我陪你去吧。</p>
+    <button onclick="checkTest('test10', 0)">A. Я пойду с тобой.</button>
+    <button onclick="checkTest('test10', 1)">B. Я пойду один.</button>
+    <button onclick="checkTest('test10', 2)">C. Ты пойдёшь со мной.</button>
     <p id="test10-result"></p>
   </div>
 </div>
 <!-- ===== ПОВТОРЕНИЕ ИЕРОГЛИФОВ ===== -->
 <div class="section" id="repeat-hanzi">
-  <div class="section-title">✍️ Повторение иероглифов</div>
-  <p style="margin-bottom:15px;color:#6B6B6B;">Вспомни значение иероглифа, затем нажми на карточку, чтобы проверить себя.</p>
-
-  <div class="hanzi-grid" id="hanzi-grid">
+  <div class="section-title">🀄 Повторение иероглифов</div>
+  <p style="margin-bottom:15px;color:#6B6B6B;">Нажми на карточку, чтобы перевернуть и увидеть пиньинь + перевод.</p>
+  <div class="hanzi-grid">
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">变化</div>
-      <div class="hanzi-back">меняться</div>
+      <div class="hanzi-front">田</div>
+      <div class="hanzi-back">tián<br>поле</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">暑假</div>
-      <div class="hanzi-back">летние каникулы</div>
+      <div class="hanzi-front">芳</div>
+      <div class="hanzi-back">fāng<br>ароматный</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">去</div>
+      <div class="hanzi-back">qù<br>идти</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">哪</div>
+      <div class="hanzi-back">nǎ<br>какой/где</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">儿</div>
+      <div class="hanzi-back">ér<br>ребёнок</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">了</div>
+      <div class="hanzi-back">le<br>частица</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">她</div>
+      <div class="hanzi-back">tā<br>она</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">他</div>
+      <div class="hanzi-back">tā<br>он</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">喂</div>
+      <div class="hanzi-back">wèi<br>алло</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">在</div>
+      <div class="hanzi-back">zài<br>находиться</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">医</div>
+      <div class="hanzi-back">yī<br>лечить</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">院</div>
+      <div class="hanzi-back">yuàn<br>двор/учреждение</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">看</div>
+      <div class="hanzi-back">kàn<br>смотреть</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">病</div>
+      <div class="hanzi-back">bìng<br>болезнь</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">朋</div>
+      <div class="hanzi-back">péng<br>друг</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">友</div>
+      <div class="hanzi-back">yǒu<br>друг</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">来</div>
+      <div class="hanzi-back">lái<br>приходить</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">给</div>
+      <div class="hanzi-back">gěi<br>давать</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">打</div>
+      <div class="hanzi-back">dǎ<br>звонить/бить</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">电</div>
+      <div class="hanzi-back">diàn<br>электричество</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">话</div>
+      <div class="hanzi-back">huà<br>речь</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">上</div>
+      <div class="hanzi-back">shàng<br>вверх</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">班</div>
+      <div class="hanzi-back">bān<br>работа/класс</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">回</div>
+      <div class="hanzi-back">huí<br>возвращаться</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">宿</div>
+      <div class="hanzi-back">sù<br>ночевать</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">舍</div>
+      <div class="hanzi-back">shè<br>дом</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">知</div>
+      <div class="hanzi-back">zhī<br>знать</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">道</div>
+      <div class="hanzi-back">dào<br>путь/знать</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">图</div>
+      <div class="hanzi-back">tú<br>карта/рисунок</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">书</div>
+      <div class="hanzi-back">shū<br>книга</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">馆</div>
+      <div class="hanzi-back">guǎn<br>здание/центр</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">见</div>
+      <div class="hanzi-back">jiàn<br>видеть</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">面</div>
+      <div class="hanzi-back">miàn<br>лицо/сторона</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">再</div>
+      <div class="hanzi-back">zài<br>снова</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">饿</div>
+      <div class="hanzi-back">è<br>голодный</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">忘</div>
+      <div class="hanzi-back">wàng<br>забыть</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">响</div>
+      <div class="hanzi-back">xiǎng<br>звенеть</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">接</div>
+      <div class="hanzi-back">jiē<br>отвечать/принимать</div>
+    </div>
+    <div class="hanzi-card" onclick="flipCard(this)">
+      <div class="hanzi-front">踢</div>
+      <div class="hanzi-back">tī<br>пинать</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
       <div class="hanzi-front">比</div>
-      <div class="hanzi-back">чем (сравнение)</div>
+      <div class="hanzi-back">bǐ<br>сравнивать/счёт</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">人口</div>
-      <div class="hanzi-back">население</div>
+      <div class="hanzi-front">赛</div>
+      <div class="hanzi-back">sài<br>соревнование</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">最</div>
-      <div class="hanzi-back">самый</div>
+      <div class="hanzi-front">队</div>
+      <div class="hanzi-back">duì<br>команда</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">城市</div>
-      <div class="hanzi-back">город</div>
+      <div class="hanzi-front">输</div>
+      <div class="hanzi-back">shū<br>проиграть</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">增加</div>
-      <div class="hanzi-back">увеличиваться</div>
+      <div class="hanzi-front">赢</div>
+      <div class="hanzi-back">yíng<br>выиграть</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">建筑</div>
-      <div class="hanzi-back">здание, архитектура</div>
+      <div class="hanzi-front">祝</div>
+      <div class="hanzi-back">zhù<br>желать</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">过去</div>
-      <div class="hanzi-back">прошлое</div>
+      <div class="hanzi-front">贺</div>
+      <div class="hanzi-back">hè<br>поздравлять</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">变</div>
-      <div class="hanzi-back">становиться</div>
+      <div class="hanzi-front">哎</div>
+      <div class="hanzi-back">āi<br>эй/ой</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">更</div>
-      <div class="hanzi-back">ещё более</div>
+      <div class="hanzi-front">托</div>
+      <div class="hanzi-back">tuō<br>поручать</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">漂亮</div>
-      <div class="hanzi-back">красивый</div>
+      <div class="hanzi-front">福</div>
+      <div class="hanzi-back">fú<br>счастье</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">暖和</div>
-      <div class="hanzi-back">тёплый</div>
+      <div class="hanzi-front">已</div>
+      <div class="hanzi-back">yǐ<br>уже</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">气温</div>
-      <div class="hanzi-back">температура воздуха</div>
+      <div class="hanzi-front">经</div>
+      <div class="hanzi-back">jīng<br>проходить через</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">预报</div>
-      <div class="hanzi-back">прогноз</div>
+      <div class="hanzi-front">考</div>
+      <div class="hanzi-back">kǎo<br>экзамен</div>
     </div>
     <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">高</div>
-      <div class="hanzi-back">высокий</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">低</div>
-      <div class="hanzi-back">низкий</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">屋子</div>
-      <div class="hanzi-back">комната</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">暖气</div>
-      <div class="hanzi-back">отопление</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">感觉</div>
-      <div class="hanzi-back">чувствовать</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">音乐</div>
-      <div class="hanzi-back">музыка</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">迷</div>
-      <div class="hanzi-back">фанат</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">古典</div>
-      <div class="hanzi-back">классический</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">现代</div>
-      <div class="hanzi-back">современный</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">名曲</div>
-      <div class="hanzi-back">знаменитая мелодия</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">民歌</div>
-      <div class="hanzi-back">народная песня</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">流行</div>
-      <div class="hanzi-back">популярный</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">歌曲</div>
-      <div class="hanzi-back">песня</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">歌词</div>
-      <div class="hanzi-back">текст песни</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">年轻</div>
-      <div class="hanzi-back">молодой</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">遥远</div>
-      <div class="hanzi-back">далёкий</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">也许</div>
-      <div class="hanzi-back">возможно</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">下载</div>
-      <div class="hanzi-back">скачивать</div>
-    </div>
-    <div class="hanzi-card" onclick="flipCard(this)">
-      <div class="hanzi-front">首</div>
-      <div class="hanzi-back">счётное слово (для песен)</div>
+      <div class="hanzi-front">陪</div>
+      <div class="hanzi-back">péi<br>сопровождать</div>
     </div>
   </div>
 </div>
 
 <!-- ===== ПОВТОРЕНИЕ ПИНЬИНЬ ===== -->
 <div class="section" id="repeat-pinyin">
-  <div class="section-title">🔤 Повторение пиньинь</div>
-  <p style="margin-bottom:15px;color:#6B6B6B;">Вспомни слово по пиньиню, затем нажми на карточку, чтобы проверить себя.</p>
-
-  <div class="pinyin-grid" id="pinyin-grid">
+  <div class="section-title">🔊 Повторение пиньинь</div>
+  <p style="margin-bottom:15px;color:#6B6B6B;">Нажми на карточку, чтобы увидеть иероглиф и перевод.</p>
+  <div class="pinyin-grid">
     <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">biànhuà</div>
-      <div class="pinyin-back">变化</div>
+      <div class="pinyin-front">tián</div>
+      <div class="pinyin-back">田<br>поле</div>
     </div>
     <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">shǔjià</div>
-      <div class="pinyin-back">暑假</div>
+      <div class="pinyin-front">fāng</div>
+      <div class="pinyin-back">芳<br>ароматный</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">qù</div>
+      <div class="pinyin-back">去<br>идти</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">nǎr</div>
+      <div class="pinyin-back">哪儿<br>где/куда</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">le</div>
+      <div class="pinyin-back">了<br>частица</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">tā</div>
+      <div class="pinyin-back">她/他<br>она/он</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">wèi</div>
+      <div class="pinyin-back">喂<br>алло</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">zài</div>
+      <div class="pinyin-back">在<br>находиться</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">yīyuàn</div>
+      <div class="pinyin-back">医院<br>больница</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">kàn</div>
+      <div class="pinyin-back">看<br>смотреть</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">bìng</div>
+      <div class="pinyin-back">病<br>болезнь</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">péngyou</div>
+      <div class="pinyin-back">朋友<br>друг</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">lái</div>
+      <div class="pinyin-back">来<br>приходить</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">gěi</div>
+      <div class="pinyin-back">给<br>давать</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">dǎ</div>
+      <div class="pinyin-back">打<br>звонить</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">diànhuà</div>
+      <div class="pinyin-back">电话<br>телефон</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">shàngbān</div>
+      <div class="pinyin-back">上班<br>на работу</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">huí</div>
+      <div class="pinyin-back">回<br>возвращаться</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">sùshè</div>
+      <div class="pinyin-back">宿舍<br>общежитие</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">zhīdào</div>
+      <div class="pinyin-back">知道<br>знать</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">túshūguǎn</div>
+      <div class="pinyin-back">图书馆<br>библиотека</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">jiàn</div>
+      <div class="pinyin-back">见<br>видеть</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">miàn</div>
+      <div class="pinyin-back">面<br>лицо</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">zài jiàn</div>
+      <div class="pinyin-back">再见<br>до свидания</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">è</div>
+      <div class="pinyin-back">饿<br>голодный</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">wàng</div>
+      <div class="pinyin-back">忘<br>забыть</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">xiǎng</div>
+      <div class="pinyin-back">响<br>звенеть</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">jiē</div>
+      <div class="pinyin-back">接<br>отвечать</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">tī</div>
+      <div class="pinyin-back">踢<br>пинать</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">bǐsài</div>
+      <div class="pinyin-back">比赛<br>соревнование</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">duì</div>
+      <div class="pinyin-back">队<br>команда</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">shū</div>
+      <div class="pinyin-back">输<br>проиграть</div>
+    </div>
+    <div class="pinyin-card" onclick="flipCard(this)">
+      <div class="pinyin-front">yíng</div>
+      <div class="pinyin-back">赢<br>выиграть</div>
     </div>
     <div class="pinyin-card" onclick="flipCard(this)">
       <div class="pinyin-front">bǐ</div>
-      <div class="pinyin-back">比</div>
+      <div class="pinyin-back">比<br>счёт</div>
     </div>
     <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">rénkǒu</div>
-      <div class="pinyin-back">人口</div>
+      <div class="pinyin-front">zhùhè</div>
+      <div class="pinyin-back">祝贺<br>поздравлять</div>
     </div>
     <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">zuì</div>
-      <div class="pinyin-back">最</div>
+      <div class="pinyin-front">āi</div>
+      <div class="pinyin-back">哎<br>эй</div>
     </div>
     <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">chéngshì</div>
-      <div class="pinyin-back">城市</div>
+      <div class="pinyin-front">shàng</div>
+      <div class="pinyin-back">上<br>посещать</div>
     </div>
     <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">zēngjiā</div>
-      <div class="pinyin-back">增加</div>
+      <div class="pinyin-front">tuōfú</div>
+      <div class="pinyin-back">托福<br>TOEFL</div>
     </div>
     <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">jiànzhù</div>
-      <div class="pinyin-back">建筑</div>
+      <div class="pinyin-front">yǐjīng</div>
+      <div class="pinyin-back">已经<br>уже</div>
     </div>
     <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">guòqù</div>
-      <div class="pinyin-back">过去</div>
+      <div class="pinyin-front">kǎo</div>
+      <div class="pinyin-back">考<br>экзамен</div>
     </div>
     <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">biàn</div>
-      <div class="pinyin-back">变</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">gèng</div>
-      <div class="pinyin-back">更</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">piàoliang</div>
-      <div class="pinyin-back">漂亮</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">nuǎnhuo</div>
-      <div class="pinyin-back">暖和</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">qìwēn</div>
-      <div class="pinyin-back">气温</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">yùbào</div>
-      <div class="pinyin-back">预报</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">gāo</div>
-      <div class="pinyin-back">高</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">dī</div>
-      <div class="pinyin-back">低</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">wūzi</div>
-      <div class="pinyin-back">屋子</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">nuǎnqì</div>
-      <div class="pinyin-back">暖气</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">gǎnjué</div>
-      <div class="pinyin-back">感觉</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">yīnyuè</div>
-      <div class="pinyin-back">音乐</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">mí</div>
-      <div class="pinyin-back">迷</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">gǔdiǎn</div>
-      <div class="pinyin-back">古典</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">xiàndài</div>
-      <div class="pinyin-back">现代</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">míngqǔ</div>
-      <div class="pinyin-back">名曲</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">míngē</div>
-      <div class="pinyin-back">民歌</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">liúxíng</div>
-      <div class="pinyin-back">流行</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">gēqǔ</div>
-      <div class="pinyin-back">歌曲</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">gēcí</div>
-      <div class="pinyin-back">歌词</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">niánqīng</div>
-      <div class="pinyin-back">年轻</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">yáoyuǎn</div>
-      <div class="pinyin-back">遥远</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">yěxǔ</div>
-      <div class="pinyin-back">也许</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">xiàzài</div>
-      <div class="pinyin-back">下载</div>
-    </div>
-    <div class="pinyin-card" onclick="flipCard(this)">
-      <div class="pinyin-front">shǒu</div>
-      <div class="pinyin-back">首</div>
+      <div class="pinyin-front">péi</div>
+      <div class="pinyin-back">陪<br>сопровождать</div>
     </div>
   </div>
 </div>
 
-<a class="back-link" href="index.html">← Назад к выбору урока</a>
-
+<!-- ===== СКРИПТ ===== -->
 <script>
-// ===== ТЕСТЫ =====
-function checkTest(testId, answerIndex) {
-  var correctAnswers = {
-    test1: 0,
-    test2: 0,
-    test3: 2,
-    test4: 0,
-    test5: 0,
-    test6: 0,
-    test7: 1,
-    test8: 0,
-    test9: 0,
-    test10: 0
-  };
-
-  var resultEl = document.getElementById(testId + '-result');
-  if (answerIndex === correctAnswers[testId]) {
-    resultEl.textContent = '✅ Правильно!';
-    resultEl.style.color = '#2E7D32';
-  } else {
-    resultEl.textContent = '❌ Неправильно. Попробуй ещё раз!';
-    resultEl.style.color = '#C0392B';
+  // Переворот карточек
+  function flipCard(card) {
+    card.classList.toggle('flipped');
   }
-}
 
-// ===== ПЕРЕВОРОТ КАРТОЧЕК =====
-function flipCard(card) {
-  card.classList.toggle('flipped');
-}
+  // Проверка тестов
+  function checkTest(testId, answerIndex) {
+    const answers = {
+      test1: [0, 1, 2],    // правильный: 0 (了)
+      test2: [1, 0, 2],    // правильный: 1 (又)
+      test3: [1, 0, 2],    // правильный: 1 (再)
+      test4: [0, 1, 2],    // правильный: 0
+      test5: [0, 1, 2],    // правильный: 0 (对了)
+      test6: [0, 1, 2],    // правильный: 0 (在)
+      test7: [0, 1, 2],    // правильный: 0 (赢)
+      test8: [0, 1, 2],    // правильный: 0 (饿)
+      test9: [0, 1, 2],    // правильный: 0 (了)
+      test10: [0, 1, 2]    // правильный: 0
+    };
+
+    const resultEl = document.getElementById(testId + '-result');
+    const correctIndex = answers[testId][0];
+
+    if (answerIndex === correctIndex) {
+      resultEl.textContent = '✅ Правильно!';
+      resultEl.style.color = '#2E7D32';
+    } else {
+      resultEl.textContent = '❌ Неправильно. Попробуй ещё раз.';
+      resultEl.style.color = '#C0392B';
+    }
+  }
 </script>
 
 </body>
